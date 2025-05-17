@@ -1,13 +1,14 @@
 .DS_Store
 /node_modules/
 *.tsbuildinfo
+pnpm-workspace.yaml
 
 # React Router
 /.react-router/
 /build/
+/dist/
 
 # Cloudflare
 .mf
 .wrangler
 .dev.vars*
-pnpm-workspace
