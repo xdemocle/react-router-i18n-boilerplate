@@ -1,6 +1,5 @@
 {
-  "name": "small-meadow-b3e8",
-  "private": true,
+  "name": "react-router-i18n-boilerplate",
   "type": "module",
   "scripts": {
     "build": "react-router build",
