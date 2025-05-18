@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "features": "Características",
+    "pricing": "Precios",
+    "faq": "Preguntas",
+    "contact": "Contacto",
+    "loginButton": "Iniciar sesión"
+  },
+  "footer": {
+    "description": "Boilerplate React Router v7 listo para producción. Moderno, divertido y perfecto para startups, pequeños negocios y emprendedores.",
+    "navigation": "Navegación",
+    "connect": "Conectar",
+    "contactUs": "Contáctanos",
+    "allRightsReserved": "Todos los derechos reservados.",
+    "terms": "Términos y condiciones",
+    "privacy": "Política de privacidad"
+  },
+  "cta": {
+    "getStarted": "Comienza gratis",
+    "demoStore": "Ver tienda de ejemplo",
+    "learnMore": "Saber más"
+  },
+  "benefits": {
+    "easySetup": "Configuración fácil, sin conocimientos técnicos",
+    "seoReady": "SEO optimizado y listo para redes sociales",
+    "templates": "Plantillas hermosas incluidas",
+    "analytics": "Herramientas de análisis y crecimiento",
+    "customDomain": "Soporte de dominio personalizado",
+    "support": "Soporte amigable",
+    "i18n": "i18n listo (Inglés, Francés)",
+    "tailwind": "Estilos con TailwindCSS",
+    "shadcn": "Componentes Shadcn UI",
+    "postcss": "Integración PostCSS & Vite"
+  }
+}

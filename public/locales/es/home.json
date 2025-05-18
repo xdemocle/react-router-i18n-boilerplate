@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "react-router-i18n-boilerplate - Boilerplate React Router v7 moderno para startups",
+    "description": "Boilerplate React Router v7.js listo para producción para startups, pequeños negocios y emprendedores. Rápido, moderno y optimizado para SEO."
+  },
+  "hero": {
+    "title": "Construye tu próximo proyecto con React Router v7",
+    "subtitle": "Un boilerplate moderno y listo para producción con React Router v7.js para startups y creadores.",
+    "primaryCta": "Empezar",
+    "secondaryCta": "Ver tienda demo"
+  },
+  "cta": {
+    "primary": "Comienza gratis",
+    "secondary": "Ver tienda demo"
+  },
+  "features": {
+    "customerReach": {
+      "title": "Aumenta tu alcance",
+      "desc": "Expande tu negocio online con un sitio hermoso y responsivo."
+    },
+    "seoBoost": {
+      "title": "SEO y redes sociales",
+      "desc": "Optimizado para SEO y listo para compartir en redes sociales."
+    },
+    "templates": {
+      "title": "Plantillas hermosas",
+      "desc": "Elige entre plantillas modernas y divertidas, diseñadas para pequeños negocios."
+    },
+    "analytics": {
+      "title": "Analítica e insights",
+      "desc": "Sigue tu crecimiento con herramientas de análisis integradas."
+    },
+    "customDomain": {
+      "title": "Dominio personalizado",
+      "desc": "Usa tu propio dominio para una presencia profesional."
+    }
+  },
+  "demo": {
+    "title": "Ver tienda demo",
+    "subtitle": "Mira cómo podría lucir tu tienda online en minutos."
+  },
+  "featuresSection": {
+    "title": "Características",
+    "subtitle": "Todo lo que necesitas para lanzar y crecer rápido."
+  },
+  "ctaSection": {
+    "title": "¿Listo para comenzar?",
+    "subtitle": "Regístrate ahora y lanza tu proyecto en minutos.",
+    "cta": "Comenzar ahora"
+  },
+  "testimonialsSection": {
+    "title": "Lo que dicen los usuarios",
+    "subtitle": "Opiniones reales de startups reales.",
+    "testimonials": [
+      {
+        "name": "Sophie Lee",
+        "business": "Panadería de Sophie",
+        "quote": "¡Abrí mi tienda online en minutos! Súper fácil y a mis clientes les encanta."
+      },
+      {
+        "name": "Carlos Díaz",
+        "business": "Comida Callejera Díaz",
+        "quote": "Por fin un creador de webs pensado para pequeños negocios. ¡Muy recomendable!"
+      },
+      {
+        "name": "Marie Dubois",
+        "business": "Boutique Dubois",
+        "quote": "Rápido, moderno y sin dolores de cabeza técnicos. ¡Mis ventas subieron!"
+      }
+    ]
+  },
+  "demoSection": {
+    "title": "Tienda demo en vivo",
+    "subtitle": "Mira una tienda real creada con react-router-i18n-boilerplate."
+  },
+  "benefits": {
+    "title": "¿Por qué elegir react-router-i18n-boilerplate?",
+    "list": [
+      "Stack escalable y listo para producción",
+      "Diseño moderno, minimalista y divertido",
+      "i18n listo (inglés, español, francés)",
+      "TailwindCSS y componentes Shadcn UI",
+      "Fácil de desplegar en Cloudflare, Vercel o Netlify"
+    ]
+  }
+}

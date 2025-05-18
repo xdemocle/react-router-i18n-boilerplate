@@ -1,0 +1,131 @@
+{
+  "hero": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about launching your online store with react-router-i18n-boilerplate."
+  },
+  "search": {
+    "placeholder": "Search questions..."
+  },
+  "categories": {
+    "general": {
+      "title": "General",
+      "questions": {
+        "1": {
+          "question": "What is react-router-i18n-boilerplate?",
+          "answer": "A platform to launch your online store in just 2 clicks—no tech skills needed. Perfect for small businesses and local vendors."
+        },
+        "2": {
+          "question": "Do I need technical skills?",
+          "answer": "No! Our visual editor and templates make it easy for anyone to get started."
+        },
+        "3": {
+          "question": "How fast can I launch?",
+          "answer": "Most users are live in under 30 minutes."
+        },
+        "4": {
+          "question": "What can I sell?",
+          "answer": "Physical products, digital goods, or services—our platform supports all business types."
+        }
+      }
+    },
+    "features": {
+      "title": "Features",
+      "questions": {
+        "1": {
+          "question": "Is my site SEO and mobile-friendly?",
+          "answer": "Yes, all sites are SEO-optimized and fully responsive for mobile, tablet, and desktop."
+        },
+        "2": {
+          "question": "Can I connect my own domain?",
+          "answer": "Yes! Free plans get a subdomain, and paid plans allow custom domains."
+        },
+        "3": {
+          "question": "What integrations are available?",
+          "answer": "Integrate with payment providers, analytics, marketing tools, and more."
+        }
+      }
+    },
+    "technical": {
+      "title": "Technical",
+      "questions": {
+        "1": {
+          "question": "What technologies does react-router-i18n-boilerplate use?",
+          "answer": "We use React Router v7.js, React, TailwindCSS, and i18next for internationalization, providing a modern, fast, and scalable foundation."
+        },
+        "2": {
+          "question": "Can I customize the code?",
+          "answer": "Yes, the boilerplate is fully customizable. You have complete access to the source code and can modify it to suit your needs."
+        },
+        "3": {
+          "question": "Is it compatible with my existing database?",
+          "answer": "The boilerplate is designed to work with most modern databases and can be configured to connect to your existing data sources."
+        },
+        "4": {
+          "question": "How do I deploy my application?",
+          "answer": "You can deploy to Cloudflare Workers, Vercel, Netlify, or any other hosting platform that supports React Router v7 applications."
+        }
+      }
+    },
+    "billing": {
+      "title": "Billing",
+      "questions": {
+        "1": {
+          "question": "Do you offer a free tier?",
+          "answer": "Yes, we offer a free tier with essential features to get you started. You can upgrade to premium plans for additional capabilities."
+        },
+        "2": {
+          "question": "What payment methods do you accept?",
+          "answer": "We accept all major credit cards, PayPal, and bank transfers for business accounts."
+        },
+        "3": {
+          "question": "Can I change plans later?",
+          "answer": "Yes, you can upgrade, downgrade, or cancel your plan at any time. Changes take effect at the start of your next billing cycle."
+        },
+        "4": {
+          "question": "Do you offer refunds?",
+          "answer": "We offer a 30-day money-back guarantee for all paid plans if you're not satisfied with our service."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Pricing & Plans",
+      "questions": {
+        "1": {
+          "question": "How much does it cost?",
+          "answer": "Start free! Upgrade to Pro or Business for more features and no ads."
+        },
+        "2": {
+          "question": "Are there transaction fees?",
+          "answer": "Only standard payment processing fees apply—no hidden charges."
+        }
+      }
+    },
+    "support": {
+      "title": "Support",
+      "questions": {
+        "1": {
+          "question": "How do I get help?",
+          "answer": "Access our help center, tutorials, or contact our friendly support team."
+        },
+        "2": {
+          "question": "Can I export my data?",
+          "answer": "Yes, you can export your store data anytime."
+        },
+        "3": {
+          "question": "Is there a community forum?",
+          "answer": "Yes, we have an active community forum where you can connect with other users, share tips, and get advice."
+        },
+        "4": {
+          "question": "Do you offer developer support?",
+          "answer": "Absolutely! Our developer support team is available to help with technical questions, customizations, and integrations."
+        }
+      }
+    }
+  },
+  "cta": {
+    "title": "Still have questions?",
+    "subtitle": "Contact our team for personalized help.",
+    "contactButton": "Contact us",
+    "startButton": "Start for free"
+  }
+}

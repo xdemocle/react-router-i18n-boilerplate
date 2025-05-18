@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "loginButton": "Login"
+  },
+  "footer": {
+    "description": "Production-ready React Router v7 boilerplate. Modern, playful, and perfect for startups, local vendors, and small businesses.",
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "contactUs": "Contact Us",
+    "allRightsReserved": "All rights reserved.",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy"
+  },
+  "cta": {
+    "getStarted": "Get started for free",
+    "demoStore": "Preview a sample store",
+    "learnMore": "Learn more"
+  },
+  "benefits": {
+    "easySetup": "Easy setup, no tech skills needed",
+    "seoReady": "SEO-optimized and social media ready",
+    "templates": "Beautiful templates included",
+    "analytics": "Analytics and growth tools",
+    "customDomain": "Custom domain support",
+    "support": "Friendly support",
+    "i18n": "i18n-ready (English, French)",
+    "tailwind": "TailwindCSS styling",
+    "shadcn": "Shadcn UI components",
+    "postcss": "PostCSS & Vite integration"
+  }
+}
