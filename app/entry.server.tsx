@@ -1,9 +1,9 @@
 import { isbot } from 'isbot';
 import { renderToReadableStream } from 'react-dom/server';
+import { I18nextProvider } from 'react-i18next';
 import type { AppLoadContext, EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
 import { createServerInstance } from './i18n/i18next.server';
-import { I18nextProvider } from 'react-i18next';
 
 export default async function handleRequest(
   request: Request,
@@ -13,7 +13,7 @@ export default async function handleRequest(
   _loadContext: AppLoadContext
 ) {
   let shellRendered = false;
-  const i18n = await createServerInstance();
+  const i18n = createServerInstance();
   const userAgent = request.headers.get('user-agent');
 
   const body = await renderToReadableStream(

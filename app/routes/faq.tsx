@@ -5,6 +5,7 @@ import { AnimatedSection } from '~/components/ui/animated-section';
 import { BackgroundSlider } from '~/components/ui/background-slider';
 import { CtaButton } from '~/components/ui/cta-button';
 import { FAQAccordion } from '~/components/ui/faq-accordion';
+import { createServerInstance } from '~/i18n/i18next.server';
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,8 +18,8 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export async function loader() {
-  const { i18n } = useTranslation();
+export async function loader({ request }: { request: Request }) {
+  const i18n = createServerInstance(request);
   const locale = i18n.language;
 
   return {
