@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { I18nextProvider } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 import {
   isRouteErrorResponse,
   Links,
@@ -10,7 +9,6 @@ import {
 } from 'react-router';
 import type { Route } from './+types/root';
 import './app.css';
-import { i18n, initializeI18n } from './i18n/i18next.client';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -56,9 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  useEffect(() => {
-    initializeI18n();
-  }, []);
+  const { i18n } = useTranslation();
 
   return (
     <I18nextProvider i18n={i18n}>
