@@ -1,11 +1,24 @@
 import React from 'react';
 import type { SVGProps } from 'react';
 
-const LogoReactRouter: React.FC<SVGProps<SVGSVGElement>> = (props) => {
+const LogoReactRouter: React.FC<SVGProps<SVGSVGElement> & { height?: string | number }> = ({
+  width = '602',
+  height = '360',
+  ...props
+}) => {
+  // Calculate height based on aspect ratio if height is 'auto' and width is set
+  const finalWidth = typeof width === 'string' && width.endsWith('%') ? width : parseInt(width as string, 10) || 602;
+  const aspectRatio = 360 / 602; // Original height / width
+  const finalHeight = height === 'auto' 
+    ? typeof finalWidth === 'number' 
+      ? finalWidth * aspectRatio 
+      : 360
+    : height;
+
   return (
     <svg
-      width='602'
-      height='360'
+      width={width}
+      height={finalHeight}
       viewBox='0 0 602 360'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
