@@ -46,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           media='(prefers-color-scheme: dark)'
         />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         {children}
         <ScrollRestoration />
         <Scripts />
