@@ -2,7 +2,14 @@ import i18next from 'i18next';
 import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector';
 import HttpBackend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
-import { baseConfig, clientConfig, detectionConfig, namespaces, fallbackLng, defaultNS } from './i18n.config';
+import {
+  baseConfig,
+  baseClientConfig,
+  detectionConfig,
+  namespaces,
+  fallbackLng,
+  defaultNS,
+} from './i18n.config';
 
 // Use HTTP backend for client-side
 const backend = HttpBackend;
@@ -28,7 +35,7 @@ export async function initializeI18n() {
       .use(I18nextBrowserLanguageDetector)
       .init({
         ...baseConfig,
-        ...clientConfig,
+        ...baseClientConfig,
         detection: detectionConfig,
         // Ensure resources are loaded
         initImmediate: false,

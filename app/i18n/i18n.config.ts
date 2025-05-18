@@ -48,7 +48,7 @@ export const detectionConfig: InitOptions['detection'] = {
 export { baseConfig };
 
 // Client-specific configuration
-export const clientConfig: Partial<InitOptions> = {
+export const baseClientConfig: Partial<InitOptions> = {
   // React-specific options
   react: {
     useSuspense: false,
@@ -70,7 +70,7 @@ export const clientConfig: Partial<InitOptions> = {
 };
 
 // Server-specific configuration
-export const serverConfig: Partial<InitOptions> = {
+export const baseServerConfig: Partial<InitOptions> = {
   // Server backend configuration
   backend: {
     loadPath: '/locales/{{lng}}/{{ns}}.json',
@@ -78,4 +78,8 @@ export const serverConfig: Partial<InitOptions> = {
 };
 
 // Default export includes client-side defaults
-export default { ...baseConfig, ...clientConfig, detection: detectionConfig } as InitOptions;
+export default {
+  ...baseConfig,
+  ...baseClientConfig,
+  detection: detectionConfig,
+} as InitOptions;

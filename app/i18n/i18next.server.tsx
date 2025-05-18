@@ -1,7 +1,7 @@
 import { createInstance, type InitOptions } from 'i18next';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next } from 'react-i18next';
-import { baseConfig } from './i18n.config';
+import { baseConfig, baseServerConfig } from './i18n.config';
 
 // Create and configure the i18next instance
 const i18n = createInstance();
@@ -9,6 +9,7 @@ const i18n = createInstance();
 // Server-side i18next configuration
 const serverConfig: InitOptions = {
   ...baseConfig,
+  ...baseServerConfig,
 };
 
 // Initialize i18next instance
