@@ -7,14 +7,12 @@ import type { EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
 import { baseClientConfig } from './i18n/config';
 import i18n from './i18n/server';
-import { RemixI18Next } from 'remix-i18next/server';
 
 export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  routerContext: EntryContext,
-  remixI18nContext: RemixI18Next
+  routerContext: EntryContext
 ) {
   let shellRendered = false;
   const instance = createInstance();
