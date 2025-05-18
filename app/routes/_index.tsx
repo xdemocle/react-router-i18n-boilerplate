@@ -1,9 +1,8 @@
-import type { MetaFunction } from 'react-router';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import type { MetaFunction } from 'react-router';
 import { BackgroundSlider } from '~/components/ui/background-slider';
 import { CtaButton } from '~/components/ui/cta-button';
-import { i18n } from '~/i18n/i18next.server';
 import { MainLayout } from '../components/layout/main-layout';
 import { AnimatedSection } from '../components/ui/animated-section';
 import { FeatureCard } from '../components/ui/feature-card';
@@ -23,6 +22,7 @@ export const meta: MetaFunction = () => {
 };
 
 export async function loader() {
+  const { i18n } = useTranslation();
   const locale = i18n.language;
 
   return {

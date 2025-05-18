@@ -2,6 +2,8 @@ import { isbot } from 'isbot';
 import { renderToReadableStream } from 'react-dom/server';
 import type { AppLoadContext, EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
+import { createServerInstance } from './i18n/i18next.server';
+import { I18nextProvider } from 'react-i18next';
 
 export default async function handleRequest(
   request: Request,
@@ -11,10 +13,13 @@ export default async function handleRequest(
   _loadContext: AppLoadContext
 ) {
   let shellRendered = false;
+  const i18n = await createServerInstance();
   const userAgent = request.headers.get('user-agent');
 
   const body = await renderToReadableStream(
-    <ServerRouter context={routerContext} url={request.url} />,
+    <I18nextProvider i18n={i18n}>
+      <ServerRouter context={routerContext} url={request.url} />
+    </I18nextProvider>,
     {
       onError(error: unknown) {
         responseStatusCode = 500;
