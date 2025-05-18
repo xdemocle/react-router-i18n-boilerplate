@@ -46,7 +46,7 @@ export default function Header() {
       <div className='container mx-auto px-4 flex justify-between items-center'>
         <Link to='/' className='flex items-center'>
           <div className='mr-2 text-primary-500'>
-            <LogoReactRouter />
+            <LogoReactRouter width='32' height='auto' />
           </div>
           <span className='text-2xl font-display font-bold truncate'>
             <span
