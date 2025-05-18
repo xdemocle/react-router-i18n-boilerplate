@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import {
   isRouteErrorResponse,
@@ -49,6 +50,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
           type='image/png'
           media='(prefers-color-scheme: dark)'
         />
+        <meta name='theme-color' content='#000000' />
+        <meta name='description' content='My beautiful React app' />
+        <link rel='apple-touch-icon' href='/logo192.png' />
+        <link rel='manifest' href='/manifest.json' />
+        <meta
+          name='format-detection'
+          content='telephone=no, date=no, email=no, address=no'
+        />
+        <title>My React App</title>
       </head>
       <body suppressHydrationWarning={true}>
         {children}
@@ -64,7 +74,9 @@ export default function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </I18nextProvider>
   );
 }
@@ -95,5 +107,29 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         </pre>
       )}
     </main>
+  );
+}
+
+// export async function clientLoader() {
+// //   const data = await fakeLoadLocalGameData();
+//   return {};
+// }
+
+// export function HydrateFallback() {
+//   return <p>Loading Game...</p>;
+// }
+
+// export default function Component({ loaderData }) {
+//   return <Game data={loaderData} />;
+// }
+
+// existing imports & exports
+
+export function HydrateFallback() {
+  return (
+    <div id='loading-splash'>
+      <div id='loading-splash-spinner' />
+      <p>Loading, please wait...</p>
+    </div>
   );
 }
