@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import type { MetaFunction } from 'react-router';
 import { BackgroundSlider } from '~/components/ui/background-slider';
 import { CtaButton } from '~/components/ui/cta-button';
-import { createServerInstance } from '~/i18n/i18next.server';
 import { MainLayout } from '../components/layout/main-layout';
 import { AnimatedSection } from '../components/ui/animated-section';
 import { FeatureCard } from '../components/ui/feature-card';
@@ -22,14 +21,9 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export async function loader({ request }: { request: Request }) {
-  const i18n = createServerInstance(request);
-  const locale = i18n.language;
-
-  return {
-    locale,
-  };
-}
+// export const meta: MetaFunction = ({ data }) => {
+//   return { title: data.title }
+// }
 
 export default function Index() {
   const { t } = useTranslation('home');

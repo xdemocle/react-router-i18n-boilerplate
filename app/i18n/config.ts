@@ -5,15 +5,16 @@ import type { InitOptions } from 'i18next';
 export const debug = process.env.NODE_ENV === 'development';
 
 export const defaultNS = 'common' as const;
-export const fallbackLng = 'en' as const;
 export const locales = ['en', 'es'] as const;
 export const namespaces = ['common', 'faq', 'home'] as const;
+export const fallbackLng = 'en' as const;
+export const supportedLngs = [...locales] as const;
 
 // Base configuration shared between client and server
 const baseConfig: InitOptions = {
   defaultNS,
   fallbackLng,
-  supportedLngs: [...locales],
+  supportedLngs,
   ns: [...namespaces],
   preload: ['en'],
   load: 'languageOnly',

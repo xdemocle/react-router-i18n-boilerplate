@@ -41,12 +41,12 @@ export default function LanguageSwitcher({
 
   const handleLanguageChange = (languageCode: string) => {
     const formData = new FormData();
-    formData.append('locale', languageCode);
+    formData.append('lng', languageCode);
 
     // Keep current path and any other query params
     const url = new URL(window.location.href);
     const searchParams = new URLSearchParams(url.search);
-    searchParams.set('locale', languageCode);
+    searchParams.set('lng', languageCode);
 
     submit(formData, {
       method: 'get',

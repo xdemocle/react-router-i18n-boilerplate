@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-import { I18nextProvider, useTranslation } from 'react-i18next';
 import {
   isRouteErrorResponse,
   Links,
@@ -7,9 +5,19 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from 'react-router';
 import type { Route } from './+types/root';
 import './app.css';
+import remixI18n from './i18n/server';
+// import { useTranslation } from 'react-i18next';
+// import { useChangeLanguage } from 'remix-i18next/react';
+
+export const loader = async ({ request }: { request: Request }) => {
+  const locale = await remixI18n.getLocale(request);
+
+  return Response.json({ locale });
+};
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -25,12 +33,21 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
+  const { locale } = useLoaderData();
+
+  // This hook will change the i18n instance language to the current locale
+  // detected by the loader, this way, when we do something to change the
+  // language, this locale will change and i18next will load the correct
+  // translation files
+  // useChangeLanguage(locale);
 
   return (
     <html
-      lang={i18n.language}
-      dir={i18n.dir(i18n.language)}
+      lang={locale}
+      // dir={remixI18n.dir(locale)}
+      // lang={i18n.language}
+      // dir={i18n.dir(i18n.language)}
       suppressHydrationWarning={true}
     >
       <head>
@@ -70,15 +87,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const { i18n } = useTranslation();
-
-  return (
-    <I18nextProvider i18n={i18n}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
-      </Suspense>
-    </I18nextProvider>
-  );
+  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -129,7 +138,7 @@ export function HydrateFallback() {
   return (
     <div id='loading-splash'>
       <div id='loading-splash-spinner' />
-      <p>Loading, please wait...</p>
+      <p>Hydrating, please wait...</p>
     </div>
   );
 }
