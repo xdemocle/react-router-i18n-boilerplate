@@ -19,7 +19,6 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.2.2",
     "@cloudflare/workers-types": "^4.20250517.0",
-    "@radix-ui/react-slot": "^1.2.2",
     "@react-router/dev": "^7.6.0",
     "@react-router/fs-routes": "^7.6.0",
     "@tailwindcss/vite": "^4.1.7",
@@ -37,6 +36,7 @@
     "react-intersection-observer": "^9.16.0",
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.7",
+    "tw-animate-css": "^1.3.0",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vite-tsconfig-paths": "^5.1.4",
