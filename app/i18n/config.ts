@@ -3,7 +3,6 @@ import type { InitOptions } from 'i18next';
 // Debug mode flag
 // @ts-ignore
 export const debug = process.env.NODE_ENV === 'development';
-
 export const defaultNS = 'common' as const;
 export const locales = ['en', 'es'] as const;
 export const namespaces = ['common', 'faq', 'home'] as const;
@@ -83,6 +82,7 @@ export const serverConfig: Partial<InitOptions> = {
     loadPath: '/locales/{{lng}}/{{ns}}.json',
   },
   initAsync: false,
+  resources: {}, // Empty resources for server-side
 };
 
 // Default export includes client-side defaults
