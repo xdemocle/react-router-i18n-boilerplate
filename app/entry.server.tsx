@@ -1,12 +1,9 @@
-import { createInstance } from 'i18next';
-import resourcesToBackend from 'i18next-resources-to-backend';
 import { isbot } from 'isbot';
 import { renderToReadableStream } from 'react-dom/server';
-import { I18nextProvider, initReactI18next } from 'react-i18next';
+import { I18nextProvider } from 'react-i18next';
 import type { EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
-import { baseConfig, baseServerConfig } from './i18n/config';
-import i18n from './i18n/server';
+import { initI18n } from './i18n/server';
 
 export default async function handleRequest(
   request: Request,
@@ -14,76 +11,45 @@ export default async function handleRequest(
   responseHeaders: Headers,
   routerContext: EntryContext
 ) {
-  let shellRendered = false;
-  const instance = createInstance();
+  // Initialize i18next for this request
+  const i18n = initI18n(request);
   const userAgent = request.headers.get('user-agent');
+  const isBot = userAgent && isbot(userAgent);
 
-  // Then we could detect locale from the request
-  const lng = await i18n.getLocale(request);
-  // And here we detect what namespaces the routes about to render want to use
-  const ns = i18n.getRouteNamespaces(routerContext);
+  let hustonWeHaveAProblem = false;
 
-  // First, we create a new instance of i18next so every request will have a
-  // completely unique instance and not share any state.
-  await instance
-    .use(initReactI18next) // Tell our instance to use react-i18next
-    .use(
-      resourcesToBackend(async (language: string, namespace: string) => {
-        try {
-          // Load translations from the public directory
-          const module = await import(
-            `../public/locales/${language}/${namespace}.json`
-          );
-          return module.default;
-        } catch (error) {
-          console.error(
-            `Failed to load translations for ${language}/${namespace}:`,
-            error
-          );
-          return {};
-        }
-      })
-    )
-    .init({
-      ...baseConfig, // use the same configuration as in your client side.
-      ...baseServerConfig, // use the same configuration as in your client side.
-      lng, // The locale we detected above
-      ns, // The namespaces the routes about to render want to use
-      initAsync: false, // This ensures translations are loaded synchronously
-    });
+  try {
+    const stream = await renderToReadableStream(
+      <I18nextProvider i18n={i18n}>
+        <ServerRouter context={routerContext} url={request.url} />
+      </I18nextProvider>,
+      {
+        onError(error) {
+          console.error('Error during rendering:', error);
+          hustonWeHaveAProblem = true;
+        },
+        bootstrapScriptContent: `window.ENV = ${JSON.stringify({
+          LANGUAGE: i18n.language,
+          NAMESPACES: Object.keys(i18n.options.ns || {}),
+        })};
+        `,
+      }
+    );
 
-  // Pre-load all required namespaces
-  await Promise.all(ns.map((namespace) => instance.loadNamespaces(namespace)));
-
-  const body = await renderToReadableStream(
-    <I18nextProvider i18n={instance}>
-      <ServerRouter context={routerContext} url={request.url} />
-    </I18nextProvider>,
-    {
-      onError(error: unknown) {
-        responseStatusCode = 500;
-        // Log streaming rendering errors from inside the shell.  Don't log
-        // errors encountered during initial shell rendering since they'll
-        // reject and get logged in handleDocumentRequest.
-        if (shellRendered) {
-          console.error(error);
-        }
-      },
+    if (isBot) {
+      await stream.allReady;
     }
-  );
 
-  shellRendered = true;
+    return new Response(stream, {
+      status: hustonWeHaveAProblem ? 500 : responseStatusCode,
+      headers: responseHeaders,
+    });
+  } catch (error) {
+    console.error('Fatal rendering error:', error);
 
-  // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
-  // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
-  if ((userAgent && isbot(userAgent)) || routerContext.isSpaMode) {
-    await body.allReady;
+    return new Response('<!DOCTYPE html><html><body><h1>Internal Server Error</h1></body></html>', {
+      status: 500,
+      headers: { 'Content-Type': 'text/html' },
+    });
   }
-
-  responseHeaders.set('Content-Type', 'text/html');
-
-  return new Response(body, {
-    headers: responseHeaders,
-    status: responseStatusCode,
-  });
 }

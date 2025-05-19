@@ -7,7 +7,7 @@ import { initializeI18n } from './i18n/client';
 // Initialize i18next before hydration
 initializeI18n()
   .then((i18next) => {
-    console.debug('i18n entry.client: i18next initialized');
+    console.debug('entry.client: i18next initialized');
 
     startTransition(() => {
       hydrateRoot(
@@ -21,7 +21,7 @@ initializeI18n()
     });
   })
   .catch((error) => {
-    console.error('i18n entry.client: Failed to initialize i18next:', error);
+    console.error('entry.client: Failed to initialize i18next:', error);
 
     // Still hydrate the app even if i18next fails
     startTransition(() => {

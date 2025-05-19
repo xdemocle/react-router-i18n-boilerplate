@@ -1,20 +1,56 @@
-import HttpBackend from 'i18next-http-backend';
-import { RemixI18Next } from 'remix-i18next/server';
-import { detectionConfig } from './config';
-// @ts-ignore
-import { resolve } from 'node:path';
+import { createInstance, type i18n as i18nType } from 'i18next';
+import { LanguageDetector } from 'i18next-http-middleware';
+import resourcesToBackend from 'i18next-resources-to-backend';
+// @ts-expect-error it might complain
+import { URL } from 'node:url';
+import { initReactI18next } from 'react-i18next';
+import { baseConfig, clientConfig, fallbackLng, serverConfig } from './config';
 
-export default new RemixI18Next({
-  detection: detectionConfig,
-  // This is the configuration for i18next used when translating messages server
-  // side only
-  i18next: {
-    backend: {
-      loadPath: resolve('./public/locales/{{lng}}/{{ns}}.json'),
-    },
-  },
-  // The backend you want to use to load the translations
-  // Tip: You could pass `resources` to the `i18next` configuration and avoid
-  // a backend here
-  backend: HttpBackend,
-});
+export let i18n: i18nType;
+
+const getDefaultLanguage = (request: Request) => {
+  const url = new URL(request.url);
+  const lng = url.searchParams.get('lng') || fallbackLng;
+
+  return lng;
+};
+
+export const initI18n = (request: Request) => {
+  const lng = getDefaultLanguage(request);
+
+  if (i18n && i18n.isInitialized) {
+    i18n.changeLanguage(lng);
+    return i18n;
+  }
+
+  // Server-side i18next configuration
+  const config = {
+    ...baseConfig,
+    ...clientConfig,
+    ...serverConfig,
+    lng,
+  };
+
+  // Create and configure the i18next instance
+  i18n = createInstance();
+
+  // Initialize i18next instance
+  i18n
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .use(
+      resourcesToBackend(async (language: string, namespace: string) => {
+        try {
+          // Load translations from the public directory
+          const module = await import(`../../public/locales/${language}/${namespace}.json`);
+          return module.default;
+        } catch (error) {
+          console.error(`Failed to load translations for ${language}/${namespace}:`, error);
+          return {};
+        }
+      })
+    )
+    .init(config);
+
+  return i18n;
+};

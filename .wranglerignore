@@ -1,8 +1,6 @@
 /.wrangler
 dist/
-build/
 .env
-.react-router/
 .dev.vars
 
 .DS_Store

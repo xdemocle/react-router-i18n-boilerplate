@@ -2,14 +2,7 @@ import i18next from 'i18next';
 import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector';
 import HttpBackend from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
-import {
-  baseConfig,
-  baseClientConfig,
-  detectionConfig,
-  namespaces,
-  fallbackLng,
-  defaultNS,
-} from './config';
+import { baseConfig, clientConfig, defaultNS, detectionConfig, fallbackLng } from './config';
 
 // Use HTTP backend for client-side
 const backend = HttpBackend;
@@ -24,34 +17,27 @@ export async function initializeI18n() {
     return i18next;
   }
 
+  // Create a new instance for clean initialization
+  const instance = i18next;
+
   try {
     // Initialize with basic configuration first
-    await i18next
+    await instance
       .use(initReactI18next)
-      .use(backend)
       .use(I18nextBrowserLanguageDetector)
+      .use(backend)
       .init({
         ...baseConfig,
-        ...baseClientConfig,
+        ...clientConfig,
         detection: detectionConfig,
       });
 
-    // Load initial translations
-    const currentLang = i18next.language || 'en';
-    await Promise.all(
-      namespaces.map((ns: string) =>
-        i18next.loadNamespaces(ns).then(() => {
-          console.debug(`Loaded namespace ${ns} for language ${currentLang}`);
-        })
-      )
-    );
-
-    console.log('i18next initialization complete');
-    return i18next;
+    console.debug('i18next initialization complete');
+    return instance;
   } catch (error) {
     console.error('Failed to initialize i18next:', error);
     // Initialize with fallback configuration
-    await i18next.init({
+    await instance.init({
       ...baseConfig,
       lng: fallbackLng,
       ns: [defaultNS],
@@ -61,8 +47,7 @@ export async function initializeI18n() {
         },
       },
     });
-
-    return i18next;
+    return instance;
   }
 }
 

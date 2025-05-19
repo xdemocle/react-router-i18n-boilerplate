@@ -1,5 +1,4 @@
 import type { InitOptions } from 'i18next';
-import type { LanguageDetectorOption } from 'remix-i18next/server';
 
 // Debug mode flag
 // @ts-ignore
@@ -17,7 +16,7 @@ const baseConfig: InitOptions = {
   fallbackLng,
   supportedLngs,
   ns: [...namespaces],
-  preload: ['en'],
+  preload: [fallbackLng],
   load: 'languageOnly',
   debug,
   // Ensure fallback works correctly
@@ -39,24 +38,29 @@ const baseConfig: InitOptions = {
 };
 
 // Language detection options
-export const detectionConfig: LanguageDetectorOption = {
-  order: ['searchParams', 'cookie', 'session', 'header', 'custom'],
-  searchParamKey: 'lng',
-  sessionKey: 'i18nextLng',
-  supportedLanguages: [...supportedLngs],
-  fallbackLanguage: fallbackLng,
+export const detectionConfig: InitOptions['detection'] = {
+  caches: debug ? undefined : [fallbackLng],
+  lookupQuerystring: 'lng',
+  lookupLocalStorage: 'i18nextLng',
+  lookupSessionStorage: 'i18nextLng',
+  order: [
+    'querystring',
+    'cookie',
+    // 'sessionStorage',
+    // 'localStorage',
+    // 'navigator',
+    // 'htmlTag',
+  ],
 };
 
 // Export the base configuration for extension
 export { baseConfig };
 
 // Client-specific configuration
-export const baseClientConfig: Partial<InitOptions> = {
+export const clientConfig: Partial<InitOptions> = {
   // React-specific options
   react: {
     useSuspense: false,
-    bindI18n: 'languageChanged loaded',
-    bindI18nStore: 'added removed',
   },
 
   // Client backend configuration
@@ -73,21 +77,17 @@ export const baseClientConfig: Partial<InitOptions> = {
 };
 
 // Server-specific configuration
-export const baseServerConfig: Partial<InitOptions> = {
-  // React-specific options
-  react: {
-    useSuspense: false,
-  },
-
+export const serverConfig: Partial<InitOptions> = {
   // Server backend configuration
   backend: {
     loadPath: '/locales/{{lng}}/{{ns}}.json',
   },
+  initAsync: false,
 };
 
 // Default export includes client-side defaults
 export default {
   ...baseConfig,
-  ...baseClientConfig,
+  ...clientConfig,
   detection: detectionConfig,
 } as InitOptions;

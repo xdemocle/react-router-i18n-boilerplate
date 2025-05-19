@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router';
+import LanguageSwitcher from '~/components/layout/language-switcher';
 import { CtaButton } from '~/components/ui/cta-button';
-import LogoReactRouter from '../logo-react-router';
-import LanguageSwitcher from './language-switcher';
+import LogoReactRouter from '~/components/ui/logo-react-router';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,25 +43,19 @@ export default function Header() {
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
-      <div className='container mx-auto px-4 flex justify-between items-center'>
-        <Link to='/' className='flex items-center'>
-          <div className='mr-2 text-primary-500'>
-            <LogoReactRouter width='32' height='auto' />
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        <Link to="/" className="flex items-center">
+          <div className="mr-2 text-primary-500">
+            <LogoReactRouter width="32" height="auto" />
           </div>
-          <span className='text-2xl font-display font-bold truncate'>
-            <span
-              className={
-                isScrolled ? 'text-neutral-900' : 'text-shadow-xs text-white'
-              }
-            >
-              i18n-boiler
-            </span>
+          <span className="text-2xl font-display font-bold truncate">
+            <span className={isScrolled ? 'text-neutral-900' : 'text-shadow-xs text-white'}>i18n-boiler</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className='hidden md:flex items-center space-x-8'>
-          <ul className='flex space-x-8 items-center'>
+        <nav className="hidden md:flex items-center space-x-8">
+          <ul className="flex space-x-8 items-center">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
@@ -80,42 +74,30 @@ export default function Header() {
             ))}
           </ul>
           <LanguageSwitcher isScrolled={isScrolled} />
-          <CtaButton variant='cta' size='default' rounded='full' to='/login'>
+          <CtaButton variant="cta" size="default" rounded="full" to="/login">
             {t('nav.loginButton')}
           </CtaButton>
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className='md:hidden flex items-center'>
+        <div className="md:hidden flex items-center">
           <LanguageSwitcher isScrolled={isScrolled} />
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`ml-4 focus:outline-none ${
-              isScrolled ? 'text-neutral-800' : 'text-white'
-            }`}
-            aria-label='Toggle mobile menu'
+            className={`ml-4 focus:outline-none ${isScrolled ? 'text-neutral-800' : 'text-white'}`}
+            aria-label="Toggle mobile menu"
           >
             <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
               {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M6 18L18 6M6 6l12 12'
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M4 6h16M4 12h16M4 18h16'
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -129,18 +111,16 @@ export default function Header() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.2 }}
-          className='md:hidden bg-white shadow-lg absolute top-full left-0 w-full'
+          className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full"
         >
-          <div className='container mx-auto px-4 py-4'>
-            <ul className='flex flex-col space-y-3'>
+          <div className="container mx-auto px-4 py-4">
+            <ul className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
                     className={`block py-2 font-medium ${
-                      isActivePath(link.path)
-                        ? 'text-primary-500'
-                        : 'text-neutral-700 hover:text-primary-500'
+                      isActivePath(link.path) ? 'text-primary-500' : 'text-neutral-700 hover:text-primary-500'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -150,8 +130,8 @@ export default function Header() {
               ))}
               <li>
                 <Link
-                  to='/login'
-                  className='block py-2 font-medium text-primary-500'
+                  to="/login"
+                  className="block py-2 font-medium text-primary-500"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t('nav.loginButton')}

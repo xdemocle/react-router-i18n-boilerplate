@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
   return [
     {
       title:
-        'react-router-i18n-boilerplate - Launch your online store in 2 clicks',
+        'React-Router-i18n-boilerplate - Launch your online store in 2 clicks',
     },
     {
       name: 'description',
