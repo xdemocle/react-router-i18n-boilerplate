@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   isRouteErrorResponse,
   Links,
@@ -7,11 +8,10 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from 'react-router';
+import { useChangeLanguage } from 'remix-i18next/react';
 import type { Route } from './+types/root';
 import './app.css';
 import remixI18n from './i18n/server';
-// import { useTranslation } from 'react-i18next';
-// import { useChangeLanguage } from 'remix-i18next/react';
 
 export const loader = async ({ request }: { request: Request }) => {
   const locale = await remixI18n.getLocale(request);
@@ -33,23 +33,17 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  // const { i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const { locale } = useLoaderData();
 
   // This hook will change the i18n instance language to the current locale
   // detected by the loader, this way, when we do something to change the
   // language, this locale will change and i18next will load the correct
   // translation files
-  // useChangeLanguage(locale);
+  useChangeLanguage(locale);
 
   return (
-    <html
-      lang={locale}
-      // dir={remixI18n.dir(locale)}
-      // lang={i18n.language}
-      // dir={i18n.dir(i18n.language)}
-      suppressHydrationWarning={true}
-    >
+    <html lang={locale} dir={i18n.dir(locale)} suppressHydrationWarning={true}>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -118,21 +112,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     </main>
   );
 }
-
-// export async function clientLoader() {
-// //   const data = await fakeLoadLocalGameData();
-//   return {};
-// }
-
-// export function HydrateFallback() {
-//   return <p>Loading Game...</p>;
-// }
-
-// export default function Component({ loaderData }) {
-//   return <Game data={loaderData} />;
-// }
-
-// existing imports & exports
 
 export function HydrateFallback() {
   return (

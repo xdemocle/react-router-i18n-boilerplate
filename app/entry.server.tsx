@@ -5,7 +5,7 @@ import { renderToReadableStream } from 'react-dom/server';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import type { EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
-import { baseClientConfig } from './i18n/config';
+import { baseConfig, baseServerConfig } from './i18n/config';
 import i18n from './i18n/server';
 
 export default async function handleRequest(
@@ -45,10 +45,15 @@ export default async function handleRequest(
       })
     )
     .init({
-      ...baseClientConfig, // use the same configuration as in your client side.
+      ...baseConfig, // use the same configuration as in your client side.
+      ...baseServerConfig, // use the same configuration as in your client side.
       lng, // The locale we detected above
       ns, // The namespaces the routes about to render want to use
+      initAsync: false, // This ensures translations are loaded synchronously
     });
+
+  // Pre-load all required namespaces
+  await Promise.all(ns.map((namespace) => instance.loadNamespaces(namespace)));
 
   const body = await renderToReadableStream(
     <I18nextProvider i18n={instance}>

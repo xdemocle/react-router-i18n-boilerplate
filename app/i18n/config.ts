@@ -1,4 +1,5 @@
 import type { InitOptions } from 'i18next';
+import type { LanguageDetectorOption } from 'remix-i18next/server';
 
 // Debug mode flag
 // @ts-ignore
@@ -38,12 +39,12 @@ const baseConfig: InitOptions = {
 };
 
 // Language detection options
-export const detectionConfig: InitOptions['detection'] = {
-  order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
-  caches: ['cookie', 'localStorage'],
-  lookupQuerystring: 'lng',
-  lookupCookie: 'i18next',
-  lookupLocalStorage: 'i18nextLng',
+export const detectionConfig: LanguageDetectorOption = {
+  order: ['searchParams', 'cookie', 'session', 'header', 'custom'],
+  searchParamKey: 'lng',
+  sessionKey: 'i18nextLng',
+  supportedLanguages: [...supportedLngs],
+  fallbackLanguage: fallbackLng,
 };
 
 // Export the base configuration for extension
@@ -73,6 +74,11 @@ export const baseClientConfig: Partial<InitOptions> = {
 
 // Server-specific configuration
 export const baseServerConfig: Partial<InitOptions> = {
+  // React-specific options
+  react: {
+    useSuspense: false,
+  },
+
   // Server backend configuration
   backend: {
     loadPath: '/locales/{{lng}}/{{ns}}.json',
