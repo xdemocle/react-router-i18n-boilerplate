@@ -3,7 +3,7 @@ import { renderToReadableStream } from 'react-dom/server';
 import { I18nextProvider } from 'react-i18next';
 import type { EntryContext } from 'react-router';
 import { ServerRouter } from 'react-router';
-import { initI18n } from './i18n/server';
+import { i18n } from './i18n/server';
 
 export default async function handleRequest(
   request: Request,
@@ -12,7 +12,6 @@ export default async function handleRequest(
   routerContext: EntryContext
 ) {
   // Initialize i18next for this request
-  const i18n = initI18n(request);
   const userAgent = request.headers.get('user-agent');
   const isBot = userAgent && isbot(userAgent);
 

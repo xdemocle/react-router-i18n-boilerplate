@@ -6,8 +6,9 @@ import { initializeI18n } from './i18n/client';
 
 // Initialize i18next before hydration
 initializeI18n()
-  .then((i18next) => {
+  .then(async (i18next) => {
     console.debug('entry.client: i18next initialized');
+    console.log('entry.client: i18next.language', i18next.language);
 
     startTransition(() => {
       hydrateRoot(

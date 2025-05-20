@@ -1,19 +1,17 @@
 import type { InitOptions } from 'i18next';
 
 // Debug mode flag
-// @ts-ignore
 export const debug = process.env.NODE_ENV === 'development';
 export const defaultNS = 'common' as const;
 export const locales = ['en', 'es'] as const;
 export const namespaces = ['common', 'faq', 'home'] as const;
 export const fallbackLng = 'en' as const;
-export const supportedLngs = [...locales] as const;
 
 // Base configuration shared between client and server
 const baseConfig: InitOptions = {
   defaultNS,
   fallbackLng,
-  supportedLngs,
+  supportedLngs: [...locales],
   ns: [...namespaces],
   preload: [fallbackLng],
   load: 'languageOnly',
@@ -42,6 +40,7 @@ export const detectionConfig: InitOptions['detection'] = {
   lookupQuerystring: 'lng',
   lookupLocalStorage: 'i18nextLng',
   lookupSessionStorage: 'i18nextLng',
+  lookupFromPathIndex: 0,
   order: [
     'querystring',
     'cookie',
@@ -82,7 +81,6 @@ export const serverConfig: Partial<InitOptions> = {
     loadPath: '/locales/{{lng}}/{{ns}}.json',
   },
   initAsync: false,
-  resources: {}, // Empty resources for server-side
 };
 
 // Default export includes client-side defaults

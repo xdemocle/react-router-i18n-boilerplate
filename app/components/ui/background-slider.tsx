@@ -16,11 +16,7 @@ interface BackgroundSliderProps {
  * @param interval Time in ms between image transitions (default: 5000ms)
  * @param className Additional classes to apply to the container
  */
-export function BackgroundSlider({
-  images,
-  interval = 5000,
-  className = '',
-}: BackgroundSliderProps) {
+export function BackgroundSlider({ images, interval = 5000, className = '' }: BackgroundSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

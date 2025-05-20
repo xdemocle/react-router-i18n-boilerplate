@@ -28,7 +28,7 @@ export const meta: MetaFunction = () => {
 };
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const i18n = initI18n(request);
+  const i18n = await initI18n(request);
   const locale = i18n.language;
 
   return {
@@ -52,12 +52,6 @@ export const links: Route.LinksFunction = () => [
 export function Layout({ children }: { children: React.ReactNode }) {
   const { i18n } = useTranslation();
   const { locale } = useLoaderData<typeof loader>();
-
-  // This hook will change the i18n instance language to the current locale
-  // detected by the loader, this way, when we do something to change the
-  // language, this locale will change and i18next will load the correct
-  // translation files
-  i18n.changeLanguage(locale);
 
   return (
     <html lang={locale} dir={i18n.dir(locale)} suppressHydrationWarning={true}>
