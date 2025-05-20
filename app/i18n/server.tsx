@@ -1,11 +1,25 @@
-import { createInstance, type i18n as i18nType } from 'i18next';
-import { LanguageDetector } from 'i18next-http-middleware';
+import { createInstance, type i18n as i18nType, type InitOptions } from 'i18next';
+import { LanguageDetector, type LanguageDetectorOptions } from 'i18next-http-middleware';
 import resourcesToBackend from 'i18next-resources-to-backend';
-import { URL } from 'node:url';
-import { initReactI18next } from 'react-i18next';
-import { baseConfig, clientConfig, fallbackLng, serverConfig } from './config';
+import { baseConfig, clientConfig, debug, fallbackLng, serverConfig } from './config';
 
 export let i18n: i18nType;
+
+const detectionConfig: LanguageDetectorOptions = {
+  caches: debug ? undefined : [fallbackLng],
+  lookupQuerystring: 'lng',
+  // lookupLocalStorage: 'i18nextLng',
+  // lookupSessionStorage: 'i18nextLng',
+  lookupFromPathIndex: 0,
+  order: [
+    'querystring',
+    'cookie',
+    // 'sessionStorage',
+    // 'localStorage',
+    // 'navigator',
+    // 'htmlTag',
+  ],
+};
 
 const getDefaultLanguage = (request: Request) => {
   const url = new URL(request.url);
@@ -22,6 +36,7 @@ export const initI18n = async (request: Request) => {
     ...baseConfig,
     ...clientConfig,
     ...serverConfig,
+    detection: { ...detectionConfig } as InitOptions['detection'],
     lng,
   };
 
@@ -29,8 +44,7 @@ export const initI18n = async (request: Request) => {
   i18n = createInstance();
 
   // Initialize i18next instance
-  i18n
-    .use(initReactI18next)
+  await i18n
     .use(LanguageDetector)
     .use(
       resourcesToBackend(async (language: string, namespace: string) => {
@@ -44,6 +58,9 @@ export const initI18n = async (request: Request) => {
       })
     )
     .init(config);
+
+  // i18n.changeLanguage(i18n.language);
+  console.log('i18n.resolvedLanguage', i18n.resolvedLanguage);
 
   return i18n;
 };

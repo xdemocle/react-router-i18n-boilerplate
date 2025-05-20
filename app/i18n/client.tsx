@@ -29,7 +29,7 @@ export async function initializeI18n() {
       .init({
         ...baseConfig,
         ...clientConfig,
-        detection: detectionConfig,
+        detection: { ...detectionConfig },
       });
 
     console.debug('i18next initialization complete');

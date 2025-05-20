@@ -1,5 +1,5 @@
 import { createRequestHandler } from 'react-router';
-import { getLoadContext, type Env } from './load-context';
+import { getLoadContext, type Env } from '../load-context';
 
 const requestHandler = createRequestHandler(() => import('virtual:react-router/server-build'), import.meta.env.MODE);
 
