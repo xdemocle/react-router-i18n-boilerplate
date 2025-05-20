@@ -1,5 +1,6 @@
 import type {
   CacheStorage,
+  CfProperties,
   Request as CloudflareRequest,
   ExecutionContext,
 } from '@cloudflare/workers-types/experimental';
@@ -9,13 +10,13 @@ export interface Env {
 }
 
 type GetLoadContextArgs = {
-  request: CloudflareRequest;
+  request: Request | CloudflareRequest;
   context: {
-    cloudflare: {
-      cf: CloudflareRequest['cf'];
-      ctx: Pick<ExecutionContext, 'waitUntil' | 'passThroughOnException'>;
-      caches: CacheStorage;
-      env: Env;
+    cloudflare?: {
+      cf?: CfProperties;
+      ctx?: Pick<ExecutionContext, 'waitUntil' | 'passThroughOnException'>;
+      caches?: CacheStorage;
+      env?: Env;
     };
   };
 };
@@ -27,5 +28,15 @@ declare module 'react-router' {
 }
 
 export const getLoadContext = ({ context }: GetLoadContextArgs) => {
-  return context;
+  return {
+    cloudflare: context.cloudflare || {
+      cf: {},
+      ctx: {
+        waitUntil: () => {},
+        passThroughOnException: () => {},
+      },
+      caches: {} as CacheStorage,
+      env: { VALUE_FROM_CLOUDFLARE: 'Hello from Cloudflare' } as Env,
+    },
+  };
 };
