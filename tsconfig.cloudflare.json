@@ -25,6 +25,6 @@
     "rootDirs": [".", "./.react-router/types"],
     "strict": true,
     "target": "ES2022",
-    "types": ["@cloudflare/workers-types", "vite/client"]
+    "types": ["@cloudflare/workers-types", "vite/client", "@vitest/browser/providers/playwright"]
   }
 }
