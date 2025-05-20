@@ -1,5 +1,5 @@
 export async function loader() {
-  return Response.json({
+  return {
     short_name: 'react-router-i18n-boilerplate',
     name: 'react-router-i18n-boilerplate - Launch your online store in 2 clicks',
     start_url: '/',
@@ -13,5 +13,5 @@ export async function loader() {
         type: 'image/x-icon',
       },
     ],
-  })
+  }
 }
