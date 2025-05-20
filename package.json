@@ -2,7 +2,7 @@
   "private": true,
   "name": "react-router-i18n-boilerplate",
   "description": "Production-ready React Router v7.js boilerplate for startups, local vendors, and small businesses. Fast, modern, and SEO-optimized.",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "type": "module",
   "scripts": {
     "bl": "pnpm run test:run && pnpm run trunk && pnpm run build",
@@ -15,11 +15,11 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "lint": "npx eslint app test",
-    "lint:fix": "npm run lint -- --fix",
-    "prettier": "npx prettier app test --check",
-    "prettier:fix": "npm run prettier -- --write",
-    "format": "npm run prettier:fix && npm run lint:fix",
+    "lint": "pnpx eslint app test",
+    "lint:fix": "pnpm run lint -- --fix",
+    "prettier": "pnpx prettier app test --check",
+    "prettier:fix": "pnpm run prettier -- --write",
+    "format": "pnpm run prettier:fix && pnpm run lint:fix",
     "trunk": "./trunk flakytests validate --junit-paths \"./junit.xml\""
   },
   "dependencies": {
@@ -29,13 +29,13 @@
     "react-router": "^7.6.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250520.0",
+    "@cloudflare/vite-plugin": "^1.2.3",
     "@playwright/test": "^1.52.0",
     "@react-router/dev": "^7.6.0",
     "@react-router/fs-routes": "^7.6.0",
     "@tailwindcss/postcss": "^4.1.7",
     "@tailwindcss/vite": "^4.1.7",
-    "@types/node": "^22.15.19",
+    "@types/node": "^22.15.20",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -70,8 +70,10 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.4",
-    "vitest-browser-react": "^0.2.0",
-    "wrangler": "^4.16.0"
+    "vitest-browser-react": "^0.2.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
 }

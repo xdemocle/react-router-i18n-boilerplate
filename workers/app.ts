@@ -1,45 +1,23 @@
-import type {
-  Request as CloudflareRequest,
-  Response as CloudflareResponse,
-  ExecutionContext,
-  ExportedHandler,
-} from '@cloudflare/workers-types/experimental';
-import type { ServerBuild } from 'react-router';
-import { createRequestHandler } from 'react-router';
-import { getLoadContext, type Env } from '../load-context';
-// @ts-ignore - This file is created by running npm run build
-import * as build from '../build/server';
+import { createRequestHandler } from 'react-router'
 
-const requestHandler = createRequestHandler(build as unknown as ServerBuild);
+declare module 'react-router' {
+  export interface AppLoadContext {
+    cloudflare: {
+      env: Env
+      ctx: ExecutionContext
+    }
+  }
+}
+
+const requestHandler = createRequestHandler(
+  () => import('virtual:react-router/server-build'),
+  import.meta.env.MODE
+)
 
 export default {
-  async fetch(request: CloudflareRequest, env: Env, ctx: ExecutionContext): Promise<CloudflareResponse> {
-    try {
-      if (request.url.search('/assets/') === -1 || request.url.search('/favicon.ico') === -1) {
-        const loadContext = getLoadContext({
-          request,
-          context: {
-            cloudflare: {
-              cf: request.cf!,
-              ctx: {
-                waitUntil: ctx.waitUntil.bind(ctx),
-                passThroughOnException: ctx.passThroughOnException.bind(ctx),
-              },
-              caches: caches as any,
-              env,
-            },
-          },
-        });
-
-        return (await requestHandler(request as unknown as Request, loadContext)) as CloudflareResponse;
-      }
-
-      // Passes the incoming request through to the assets binding.
-      // No asset matched this request, so this will evaluate `not_found_handling` behavior.
-      return await env.ASSETS.fetch(request);
-    } catch (error) {
-      console.log(error);
-      return new Response('An unexpected error occurred', { status: 500 }) as CloudflareResponse;
-    }
+  async fetch(request, env, ctx) {
+    return requestHandler(request, {
+      cloudflare: { env, ctx },
+    })
   },
-} satisfies ExportedHandler<Env>;
+} satisfies ExportedHandler<Env>
