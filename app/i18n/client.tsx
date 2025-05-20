@@ -23,8 +23,8 @@ export async function initializeI18n() {
   try {
     // Initialize with basic configuration first
     await instance
-      .use(initReactI18next)
       .use(I18nextBrowserLanguageDetector)
+      .use(initReactI18next)
       .use(backend)
       .init({
         ...baseConfig,

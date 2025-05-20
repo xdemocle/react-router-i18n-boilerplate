@@ -1,3 +1,4 @@
+import type { CacheStorage, IncomingRequestCfProperties } from '@cloudflare/workers-types/experimental';
 import { type PlatformProxy } from 'wrangler';
 
 export interface Env {

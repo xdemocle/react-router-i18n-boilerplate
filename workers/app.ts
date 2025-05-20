@@ -1,6 +1,7 @@
 import type { ServerBuild } from 'react-router';
 import { createRequestHandler } from 'react-router';
 import { getLoadContext, type Env } from '../load-context';
+import type { CacheStorage } from '@cloudflare/workers-types/experimental';
 // @ts-ignore - This file is created by running npm run build
 import * as build from '../build/server';
 
@@ -22,7 +23,7 @@ export default {
               waitUntil: ctx.waitUntil.bind(ctx),
               passThroughOnException: ctx.passThroughOnException.bind(ctx),
             },
-            caches,
+            caches: caches as unknown as CacheStorage,
             env,
           },
         },
