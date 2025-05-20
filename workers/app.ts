@@ -1,7 +1,10 @@
+import type { ServerBuild } from 'react-router';
 import { createRequestHandler } from 'react-router';
 import { getLoadContext, type Env } from '../load-context';
+// @ts-ignore - This file is created by running npm run build
+import * as build from '../build/server';
 
-const requestHandler = createRequestHandler(() => import('virtual:react-router/server-build'), import.meta.env.MODE);
+const requestHandler = createRequestHandler(build as unknown as ServerBuild);
 
 export default {
   async fetch(request, env, ctx) {
