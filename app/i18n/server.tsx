@@ -32,6 +32,7 @@ export const initI18n = async (request: Request) => {
   const lng = getDefaultLanguage(request)
 
   if (i18n && i18n.isInitialized) {
+    i18n.changeLanguage(lng)
     return i18n
   }
 
