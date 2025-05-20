@@ -47,6 +47,7 @@ jobs:
       
       - name: Run tests
         run: pnpm test:run
+
       - name: Upload results
         # Run this step even if the test step ahead fails
         if: "!cancelled()"
