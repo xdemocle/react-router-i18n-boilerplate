@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250520.0",
+    "@playwright/test": "^1.52.0",
     "@react-router/dev": "^7.6.0",
     "@react-router/fs-routes": "^7.6.0",
     "@tailwindcss/postcss": "^4.1.7",
