@@ -17,38 +17,38 @@ export default async function handleRequest(
 
   let hustonWeHaveAProblem = false
 
-  try {
-    const stream = await renderToReadableStream(
-      <I18nextProvider i18n={i18n}>
-        <ServerRouter context={routerContext} url={request.url} />
-      </I18nextProvider>,
-      {
-        onError(error) {
-          console.error('Error during rendering:', error)
-          hustonWeHaveAProblem = true
-        },
-        bootstrapScriptContent: `window.ENV = ${JSON.stringify({
-          LANGUAGE: i18n.language,
-          NAMESPACES: Object.keys(i18n.options.ns || {}),
-        })};
+  // try {
+  const stream = await renderToReadableStream(
+    <I18nextProvider i18n={i18n}>
+      <ServerRouter context={routerContext} url={request.url} />
+    </I18nextProvider>,
+    {
+      onError(error) {
+        console.error('Error during rendering:', error)
+        hustonWeHaveAProblem = true
+      },
+      bootstrapScriptContent: `window.ENV = ${JSON.stringify({
+        LANGUAGE: i18n.language,
+        NAMESPACES: Object.keys(i18n.options.ns || {}),
+      })};
         `,
-      }
-    )
-
-    if (isBot) {
-      await stream.allReady
     }
+  )
 
-    return new Response(stream, {
-      status: hustonWeHaveAProblem ? 500 : responseStatusCode,
-      headers: responseHeaders,
-    })
-  } catch (error) {
-    console.error('Fatal rendering error:', error)
-
-    return new Response('<!DOCTYPE html><html><body><h1>Internal Server Error</h1></body></html>', {
-      status: 500,
-      headers: { 'Content-Type': 'text/html' },
-    })
+  if (isBot) {
+    await stream.allReady
   }
+
+  return new Response(stream, {
+    status: hustonWeHaveAProblem ? 500 : responseStatusCode,
+    headers: responseHeaders,
+  })
+  // } catch (error) {
+  //   console.error('Fatal rendering error:', error)
+
+  //   return new Response('<!DOCTYPE html><html><body><h1>Internal Server Error</h1></body></html>', {
+  //     status: 500,
+  //     headers: { 'Content-Type': 'text/html' },
+  //   })
+  // }
 }

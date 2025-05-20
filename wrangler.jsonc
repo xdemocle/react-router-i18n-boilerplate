@@ -9,10 +9,10 @@
   "compatibility_flags": ["nodejs_compat"],
   "main": "./workers/app.ts",
   "vars": {
-    "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
+    "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare",
   },
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
   /**
    * Smart Placement
@@ -46,10 +46,10 @@
   "assets": {
     "directory": "./build/client",
     "binding": "ASSETS",
-    // "not_found_handling": "single-page-application",
+    "not_found_handling": "single-page-application",
+    // "not_found_handling": "404-page",
     "html_handling": "force-trailing-slash",
-    "not_found_handling": "404-page"
-  }
+  },
 
   /**
    * Service Bindings (communicate between multiple Workers)
