@@ -1,11 +1,11 @@
-import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import type { ReactNode } from 'react'
+import { motion } from 'framer-motion'
 
 interface FeatureCardProps {
-  icon: ReactNode;
-  title: string;
-  description: string;
-  index?: number;
+  icon: ReactNode
+  title: string
+  description: string
+  index?: number
 }
 
 export function FeatureCard({ icon, title, description, index = 0 }: FeatureCardProps) {
@@ -24,5 +24,5 @@ export function FeatureCard({ icon, title, description, index = 0 }: FeatureCard
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-neutral-600">{description}</p>
     </motion.div>
-  );
+  )
 }

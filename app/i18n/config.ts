@@ -1,11 +1,11 @@
-import type { InitOptions } from 'i18next';
+import type { InitOptions } from 'i18next'
 
 // Debug mode flag
-export const debug = process.env.NODE_ENV === 'development';
-export const defaultNS = 'common' as const;
-export const locales = ['en', 'es'] as const;
-export const namespaces = ['common', 'faq', 'home'] as const;
-export const fallbackLng = 'en' as const;
+export const debug = process.env.NODE_ENV === 'development'
+export const defaultNS = 'common' as const
+export const locales = ['en', 'es'] as const
+export const namespaces = ['common', 'faq', 'home'] as const
+export const fallbackLng = 'en' as const
 
 // Base configuration shared between client and server
 const baseConfig: InitOptions = {
@@ -30,9 +30,9 @@ const baseConfig: InitOptions = {
   saveMissing: false,
   saveMissingTo: 'current',
   parseMissingKeyHandler: (key) => {
-    return key;
+    return key
   },
-};
+}
 
 // Language detection options
 export const detectionConfig: InitOptions['detection'] = {
@@ -49,10 +49,10 @@ export const detectionConfig: InitOptions['detection'] = {
     // 'navigator',
     // 'htmlTag',
   ],
-};
+}
 
 // Export the base configuration for extension
-export { baseConfig };
+export { baseConfig }
 
 // Client-specific configuration
 export const clientConfig: Partial<InitOptions> = {
@@ -72,7 +72,7 @@ export const clientConfig: Partial<InitOptions> = {
       },
     },
   },
-};
+}
 
 // Server-specific configuration
 export const serverConfig: Partial<InitOptions> = {
@@ -81,11 +81,11 @@ export const serverConfig: Partial<InitOptions> = {
     loadPath: '/locales/{{lng}}/{{ns}}.json',
   },
   initAsync: false,
-};
+}
 
 // Default export includes client-side defaults
 export default {
   ...baseConfig,
   ...clientConfig,
   detection: detectionConfig,
-} as InitOptions;
+} as InitOptions

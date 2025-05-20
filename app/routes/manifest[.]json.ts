@@ -13,5 +13,5 @@ export async function loader() {
         type: 'image/x-icon',
       },
     ],
-  });
+  })
 }

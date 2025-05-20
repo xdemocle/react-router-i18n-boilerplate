@@ -1,10 +1,10 @@
-import { useTranslation } from 'react-i18next';
-import type { MetaFunction } from 'react-router';
-import { MainLayout } from '~/components/layout/main-layout';
-import { AnimatedSection } from '~/components/ui/animated-section';
-import { BackgroundSlider } from '~/components/ui/background-slider';
-import { CtaButton } from '~/components/ui/cta-button';
-import { FAQAccordion } from '~/components/ui/faq-accordion';
+import { useTranslation } from 'react-i18next'
+import type { MetaFunction } from 'react-router'
+import { MainLayout } from '~/components/layout/main-layout'
+import { AnimatedSection } from '~/components/ui/animated-section'
+import { BackgroundSlider } from '~/components/ui/background-slider'
+import { CtaButton } from '~/components/ui/cta-button'
+import { FAQAccordion } from '~/components/ui/faq-accordion'
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,11 +14,11 @@ export const meta: MetaFunction = () => {
       content:
         'Frequently asked questions about react-router-i18n-boilerplate - Get answers to common questions about our online store platform for small businesses.',
     },
-  ];
-};
+  ]
+}
 
 export default function FAQ() {
-  const { t } = useTranslation('faq');
+  const { t } = useTranslation('faq')
 
   const faqCategories = [
     {
@@ -105,7 +105,7 @@ export default function FAQ() {
         },
       ],
     },
-  ];
+  ]
 
   return (
     <MainLayout>
@@ -124,7 +124,9 @@ export default function FAQ() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-white text-4xl md:text-5xl font-bold mb-6 text-shadow-sm">{t('hero.title')}</h1>
+            <h1 className="text-white text-4xl md:text-5xl font-bold mb-6 text-shadow-sm">
+              {t('hero.title')}
+            </h1>
             <p className="text-white text-xl mb-8 text-shadow-sm">{t('hero.subtitle')}</p>
           </div>
         </div>
@@ -194,5 +196,5 @@ export default function FAQ() {
         </div>
       </section>
     </MainLayout>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import type { FC, SVGProps } from 'react';
+import type { FC, SVGProps } from 'react'
 
 const LogoReactRouter: FC<SVGProps<SVGSVGElement> & { height?: string | number }> = ({
   width = '602',
@@ -6,9 +6,11 @@ const LogoReactRouter: FC<SVGProps<SVGSVGElement> & { height?: string | number }
   ...props
 }) => {
   // Calculate height based on aspect ratio if height is 'auto' and width is set
-  const finalWidth = typeof width === 'string' && width.endsWith('%') ? width : parseInt(width as string, 10) || 602;
-  const aspectRatio = 360 / 602; // Original height / width
-  const finalHeight = height === 'auto' ? (typeof finalWidth === 'number' ? finalWidth * aspectRatio : 360) : height;
+  const finalWidth =
+    typeof width === 'string' && width.endsWith('%') ? width : parseInt(width as string, 10) || 602
+  const aspectRatio = 360 / 602 // Original height / width
+  const finalHeight =
+    height === 'auto' ? (typeof finalWidth === 'number' ? finalWidth * aspectRatio : 360) : height
 
   return (
     <svg
@@ -36,7 +38,7 @@ const LogoReactRouter: FC<SVGProps<SVGSVGElement> & { height?: string | number }
         fill="white"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default LogoReactRouter;
+export default LogoReactRouter

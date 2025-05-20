@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import type { MetaFunction } from 'react-router';
-import { BackgroundSlider } from '~/components/ui/background-slider';
-import { CtaButton } from '~/components/ui/cta-button';
-import { MainLayout } from '../components/layout/main-layout';
-import { AnimatedSection } from '../components/ui/animated-section';
-import { FeatureCard } from '../components/ui/feature-card';
+import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import type { MetaFunction } from 'react-router'
+import { BackgroundSlider } from '~/components/ui/background-slider'
+import { CtaButton } from '~/components/ui/cta-button'
+import { MainLayout } from '../components/layout/main-layout'
+import { AnimatedSection } from '../components/ui/animated-section'
+import { FeatureCard } from '../components/ui/feature-card'
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,8 +17,8 @@ export const meta: MetaFunction = () => {
       content:
         'Help local vendors, small businesses, and street shop owners launch their online presence in just 2 clicks!',
     },
-  ];
-};
+  ]
+}
 
 // Add loader
 
@@ -27,12 +27,17 @@ export const meta: MetaFunction = () => {
 // }
 
 export default function Index() {
-  const { t } = useTranslation('home');
+  const { t } = useTranslation('home')
 
   const features = [
     {
       icon: (
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="w-12 h-12"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
         </svg>
       ),
@@ -41,7 +46,12 @@ export default function Index() {
     },
     {
       icon: (
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="w-12 h-12"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             fillRule="evenodd"
             d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
@@ -54,7 +64,12 @@ export default function Index() {
     },
     {
       icon: (
-        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="w-12 h-12"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             fillRule="evenodd"
             d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z"
@@ -65,7 +80,7 @@ export default function Index() {
       title: t('features.deviceFriendly.title'),
       description: t('features.deviceFriendly.description'),
     },
-  ];
+  ]
 
   return (
     <MainLayout>
@@ -171,7 +186,9 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('featuresSection.title')}</h2>
-            <p className="text-neutral-600 max-w-2xl mx-auto text-lg">{t('featuresSection.subtitle')}</p>
+            <p className="text-neutral-600 max-w-2xl mx-auto text-lg">
+              {t('featuresSection.subtitle')}
+            </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -192,36 +209,69 @@ export default function Index() {
       <section className="py-16 md:py-24 bg-neutral-50">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('testimonialsSection.title')}</h2>
-            <p className="text-neutral-600 max-w-2xl mx-auto text-lg">{t('testimonialsSection.subtitle')}</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t('testimonialsSection.title')}
+            </h2>
+            <p className="text-neutral-600 max-w-2xl mx-auto text-lg">
+              {t('testimonialsSection.subtitle')}
+            </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((_, index) => (
-              <AnimatedSection key={index} delay={0.1 * index} className="bg-white rounded-xl p-6 shadow-custom">
+              <AnimatedSection
+                key={index}
+                delay={0.1 * index}
+                className="bg-white rounded-xl p-6 shadow-custom"
+              >
                 <div className="flex items-center mb-4">
                   <div className="text-primary-500">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   </div>
                   <div className="text-primary-500 ml-1">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   </div>
                   <div className="text-primary-500 ml-1">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   </div>
                   <div className="text-primary-500 ml-1">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   </div>
                   <div className="text-primary-500 ml-1">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   </div>
@@ -240,7 +290,9 @@ export default function Index() {
                     />
                   </div>
                   <div>
-                    <p className="font-bold">{t(`testimonialsSection.testimonials.${index}.name`)}</p>
+                    <p className="font-bold">
+                      {t(`testimonialsSection.testimonials.${index}.name`)}
+                    </p>
                     <p className="text-sm text-neutral-500">
                       {t(`testimonialsSection.testimonials.${index}.business`)}
                     </p>
@@ -257,7 +309,9 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <AnimatedSection>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">{t('ctaSection.title')}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
+                {t('ctaSection.title')}
+              </h2>
               <p className="text-primary-900 mb-8 text-lg">{t('ctaSection.subtitle')}</p>
               <CtaButton variant="cta" size="lg" rounded="full" to="/signup">
                 {t('ctaSection.cta')}
@@ -267,5 +321,5 @@ export default function Index() {
         </div>
       </section>
     </MainLayout>
-  );
+  )
 }

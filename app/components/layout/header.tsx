@@ -1,33 +1,33 @@
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router';
-import LanguageSwitcher from '~/components/layout/language-switcher';
-import { CtaButton } from '~/components/ui/cta-button';
-import LogoReactRouter from '~/components/ui/logo-react-router';
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link, useLocation } from 'react-router'
+import LanguageSwitcher from '~/components/layout/language-switcher'
+import { CtaButton } from '~/components/ui/cta-button'
+import LogoReactRouter from '~/components/ui/logo-react-router'
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { t } = useTranslation('common');
-  const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { t } = useTranslation('common')
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setIsScrolled(true);
+        setIsScrolled(true)
       } else {
-        setIsScrolled(false);
+        setIsScrolled(false)
       }
-    };
+    }
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const isActivePath = (path: string) => {
-    return location.pathname === path;
-  };
+    return location.pathname === path
+  }
 
   const navLinks = [
     { name: t('nav.home'), path: '/' },
@@ -35,7 +35,7 @@ export default function Header() {
     { name: t('nav.pricing'), path: '/pricing' },
     { name: t('nav.faq'), path: '/faq' },
     { name: t('nav.contact'), path: '/contact' },
-  ];
+  ]
 
   return (
     <header
@@ -156,5 +156,5 @@ export default function Header() {
         </motion.div>
       )}
     </header>
-  );
+  )
 }

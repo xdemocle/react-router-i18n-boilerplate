@@ -1,11 +1,11 @@
-import i18next from 'i18next';
-import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector';
-import HttpBackend from 'i18next-http-backend';
-import { initReactI18next } from 'react-i18next';
-import { baseConfig, clientConfig, defaultNS, detectionConfig, fallbackLng } from './config';
+import i18next from 'i18next'
+import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector'
+import HttpBackend from 'i18next-http-backend'
+import { initReactI18next } from 'react-i18next'
+import { baseConfig, clientConfig, defaultNS, detectionConfig, fallbackLng } from './config'
 
 // Use HTTP backend for client-side
-const backend = HttpBackend;
+const backend = HttpBackend
 
 /**
  * Initialize i18next with all required configurations
@@ -14,11 +14,11 @@ const backend = HttpBackend;
 export async function initializeI18n() {
   // Check if already initialized
   if (i18next.isInitialized) {
-    return i18next;
+    return i18next
   }
 
   // Create a new instance for clean initialization
-  const instance = i18next;
+  const instance = i18next
 
   try {
     // Initialize with basic configuration first
@@ -30,12 +30,12 @@ export async function initializeI18n() {
         ...baseConfig,
         ...clientConfig,
         detection: { ...detectionConfig },
-      });
+      })
 
-    console.debug('i18next initialization complete');
-    return instance;
+    console.debug('i18next initialization complete')
+    return instance
   } catch (error) {
-    console.error('Failed to initialize i18next:', error);
+    console.error('Failed to initialize i18next:', error)
     // Initialize with fallback configuration
     await instance.init({
       ...baseConfig,
@@ -46,10 +46,10 @@ export async function initializeI18n() {
           [defaultNS]: {},
         },
       },
-    });
-    return instance;
+    })
+    return instance
   }
 }
 
 // Initialize and export i18next instance for direct usage
-export const i18n = i18next;
+export const i18n = i18next

@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 import {
   Links,
   Meta,
@@ -9,11 +9,11 @@ import {
   useLoaderData,
   type LoaderFunctionArgs,
   type MetaFunction,
-} from 'react-router';
-import pkg from '../package.json';
-import type { Route } from './+types/root';
-import { initI18n } from './i18n/server';
-import './tailwind.css';
+} from 'react-router'
+import pkg from '../package.json'
+import type { Route } from './+types/root'
+import { initI18n } from './i18n/server'
+import './tailwind.css'
 
 export const meta: MetaFunction = () => {
   return [
@@ -24,16 +24,16 @@ export const meta: MetaFunction = () => {
       name: 'description',
       content: pkg.description,
     },
-  ];
-};
+  ]
+}
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  const i18n = await initI18n(request);
-  const locale = i18n.language;
+  const i18n = await initI18n(request)
+  const locale = i18n.language
 
   return {
     locale,
-  };
+  }
 }
 
 export const links: Route.LinksFunction = () => [
@@ -47,11 +47,11 @@ export const links: Route.LinksFunction = () => [
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
   },
-];
+]
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { i18n } = useTranslation();
-  const { locale } = useLoaderData<typeof loader>();
+  const { i18n } = useTranslation()
+  const { locale } = useLoaderData<typeof loader>()
 
   return (
     <html lang={locale} dir={i18n.dir(locale)} suppressHydrationWarning={true}>
@@ -83,25 +83,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  );
+  )
 }
 
 export default function App() {
-  return <Outlet />;
+  return <Outlet />
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
-  let details = 'An unexpected error occurred.';
-  let stack: string | undefined;
+  let message = 'Oops!'
+  let details = 'An unexpected error occurred.'
+  let stack: string | undefined
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
+    message = error.status === 404 ? '404' : 'Error'
     details =
-      error.status === 404 ? 'The requested page could not be found.' : error.statusText || details;
+      error.status === 404 ? 'The requested page could not be found.' : error.statusText || details
   } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
+    details = error.message
+    stack = error.stack
   }
 
   return (
@@ -114,7 +114,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         </pre>
       )}
     </main>
-  );
+  )
 }
 
 export function HydrateFallback() {
@@ -123,5 +123,5 @@ export function HydrateFallback() {
       <div id="loading-splash-spinner" />
       <p>Hydrating, please wait...</p>
     </div>
-  );
+  )
 }

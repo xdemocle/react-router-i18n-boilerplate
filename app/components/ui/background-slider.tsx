@@ -1,10 +1,10 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 interface BackgroundSliderProps {
-  images: string[];
-  interval?: number; // in milliseconds
-  className?: string;
+  images: string[]
+  interval?: number // in milliseconds
+  className?: string
 }
 
 /**
@@ -16,19 +16,23 @@ interface BackgroundSliderProps {
  * @param interval Time in ms between image transitions (default: 5000ms)
  * @param className Additional classes to apply to the container
  */
-export function BackgroundSlider({ images, interval = 5000, className = '' }: BackgroundSliderProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export function BackgroundSlider({
+  images,
+  interval = 5000,
+  className = '',
+}: BackgroundSliderProps) {
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
     // Only set up the interval if we have multiple images
-    if (images.length <= 1) return;
+    if (images.length <= 1) return
 
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, interval);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+    }, interval)
 
-    return () => clearInterval(timer);
-  }, [images.length, interval]);
+    return () => clearInterval(timer)
+  }, [images.length, interval])
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
@@ -50,5 +54,5 @@ export function BackgroundSlider({ images, interval = 5000, className = '' }: Ba
       {/* Overlay to blend with gradient and ensure text readability */}
       <div className="absolute inset-0 bg-primary-900/70 mix-blend-multiply" />
     </div>
-  );
+  )
 }

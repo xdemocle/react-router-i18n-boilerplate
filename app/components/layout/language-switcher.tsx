@@ -1,56 +1,56 @@
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Form, useLocation, useSubmit } from 'react-router';
+import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Form, useLocation, useSubmit } from 'react-router'
 
 interface LanguageSwitcherProps {
-  isScrolled: boolean;
+  isScrolled: boolean
 }
 
 export default function LanguageSwitcher({ isScrolled }: LanguageSwitcherProps) {
-  const { i18n } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const submit = useSubmit();
-  const location = useLocation();
+  const { i18n } = useTranslation()
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  const submit = useSubmit()
+  const location = useLocation()
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside)
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   const languages = [
     { code: 'en', name: 'English', flag: '🇬🇧' },
     { code: 'es', name: 'Español', flag: '🇪🇸' },
-  ];
+  ]
 
-  const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0];
+  const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[0]
 
   const handleLanguageChange = (languageCode: string) => {
-    const formData = new FormData();
-    formData.append('lng', languageCode);
+    const formData = new FormData()
+    formData.append('lng', languageCode)
 
     // Keep current path and any other query params
-    const url = new URL(window.location.href);
-    const searchParams = new URLSearchParams(url.search);
-    searchParams.set('lng', languageCode);
+    const url = new URL(window.location.href)
+    const searchParams = new URLSearchParams(url.search)
+    searchParams.set('lng', languageCode)
 
-    i18n.changeLanguage(languageCode);
+    i18n.changeLanguage(languageCode)
 
     submit(formData, {
       method: 'get',
       action: `${location.pathname}?${searchParams.toString()}`,
-    });
-    setIsOpen(false);
-  };
+    })
+    setIsOpen(false)
+  }
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -97,5 +97,5 @@ export default function LanguageSwitcher({ isScrolled }: LanguageSwitcherProps) 
         </div>
       )}
     </div>
-  );
+  )
 }

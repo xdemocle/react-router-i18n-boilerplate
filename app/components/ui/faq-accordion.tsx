@@ -1,29 +1,26 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface FAQItem {
-  question: string;
-  answer: string;
+  question: string
+  answer: string
 }
 
 interface FAQAccordionProps {
-  faqs: FAQItem[];
+  faqs: FAQItem[]
 }
 
 export function FAQAccordion({ faqs }: FAQAccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+    setOpenIndex(openIndex === index ? null : index)
+  }
 
   return (
     <div className="space-y-4">
       {faqs.map((faq, index) => (
-        <div 
-          key={index} 
-          className="border border-neutral-200 rounded-lg overflow-hidden shadow-sm"
-        >
+        <div key={index} className="border border-neutral-200 rounded-lg overflow-hidden shadow-sm">
           <button
             className="flex justify-between items-center w-full p-4 text-left bg-white hover:bg-neutral-50 transition-colors duration-200"
             onClick={() => toggleAccordion(index)}
@@ -33,7 +30,7 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
             <span className="text-neutral-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`h-5 w-5 transition-transform duration-200 ${openIndex === index ? "transform rotate-180" : ""}`}
+                className={`h-5 w-5 transition-transform duration-200 ${openIndex === index ? 'transform rotate-180' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -47,12 +44,12 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
               </svg>
             </span>
           </button>
-          
+
           <AnimatePresence>
             {openIndex === index && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
+                animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
@@ -66,5 +63,5 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
         </div>
       ))}
     </div>
-  );
+  )
 }

@@ -1,1 +1,1 @@
-export const squared = (n: number) => n * n;
+export const squared = (n: number) => n * n

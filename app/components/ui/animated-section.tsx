@@ -1,18 +1,18 @@
-import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import type { ReactNode } from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 interface AnimatedSectionProps {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
+  children: ReactNode
+  className?: string
+  delay?: number
 }
 
 export function AnimatedSection({ children, className = '', delay = 0.1 }: AnimatedSectionProps) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  });
+  })
 
   const variants = {
     hidden: {
@@ -28,7 +28,7 @@ export function AnimatedSection({ children, className = '', delay = 0.1 }: Anima
         delay: delay,
       },
     },
-  };
+  }
 
   return (
     <motion.div
@@ -40,5 +40,5 @@ export function AnimatedSection({ children, className = '', delay = 0.1 }: Anima
     >
       {children}
     </motion.div>
-  );
+  )
 }

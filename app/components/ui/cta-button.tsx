@@ -1,8 +1,8 @@
-import { Link } from 'react-router';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { type ButtonHTMLAttributes, forwardRef } from 'react';
+import { Link } from 'react-router'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
 
-import { cn } from '~/lib/utils';
+import { cn } from '~/lib/utils'
 
 // Define button variants using class-variance-authority
 const buttonVariants = cva(
@@ -37,13 +37,13 @@ const buttonVariants = cva(
       rounded: 'default',
     },
   }
-);
+)
 
 // Define button props including all variants
 export interface CtaButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  to?: string;
+  to?: string
 }
 
 /**
@@ -67,14 +67,20 @@ const CtaButton = forwardRef<HTMLButtonElement, CtaButtonProps>(
         <Link to={to} className={cn(buttonVariants({ variant, size, rounded, className }))}>
           {props.children}
         </Link>
-      );
+      )
     }
 
     // Otherwise render as a button
-    return <button className={cn(buttonVariants({ variant, size, rounded, className }))} ref={ref} {...props} />;
+    return (
+      <button
+        className={cn(buttonVariants({ variant, size, rounded, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
   }
-);
+)
 
-CtaButton.displayName = 'CtaButton';
+CtaButton.displayName = 'CtaButton'
 
-export { CtaButton, buttonVariants };
+export { CtaButton, buttonVariants }

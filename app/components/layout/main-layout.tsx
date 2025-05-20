@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react';
-import Footer from '~/components/layout/footer';
-import Header from '~/components/layout/header';
+import type { ReactNode } from 'react'
+import Footer from '~/components/layout/footer'
+import Header from '~/components/layout/header'
 
 interface MainLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
@@ -13,5 +13,5 @@ export function MainLayout({ children }: MainLayoutProps) {
       <main className="flex-grow">{children}</main>
       <Footer />
     </div>
-  );
+  )
 }
