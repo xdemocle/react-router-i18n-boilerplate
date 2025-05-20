@@ -1,15 +1,21 @@
-import type { CacheStorage, IncomingRequestCfProperties } from '@cloudflare/workers-types/experimental';
-import { type PlatformProxy } from 'wrangler';
+import type {
+  CacheStorage,
+  Request as CloudflareRequest,
+  ExecutionContext,
+} from '@cloudflare/workers-types/experimental';
 
 export interface Env {
   VALUE_FROM_CLOUDFLARE: 'Hello from Cloudflare';
 }
 
 type GetLoadContextArgs = {
-  request: Request;
+  request: CloudflareRequest;
   context: {
-    cloudflare: Omit<PlatformProxy<Env>, 'dispose' | 'caches'> & {
-      caches: PlatformProxy<Env, IncomingRequestCfProperties>['caches'] | CacheStorage;
+    cloudflare: {
+      cf: CloudflareRequest['cf'];
+      ctx: Pick<ExecutionContext, 'waitUntil' | 'passThroughOnException'>;
+      caches: CacheStorage;
+      env: Env;
     };
   };
 };
