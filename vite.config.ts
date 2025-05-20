@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [
     eslint({
       overrideConfigFile: './.eslintrc.cjs',
+      exclude: ['workers/**/*'],
     }),
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     tailwindcss(),
