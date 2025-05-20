@@ -21,7 +21,11 @@ module.exports = {
   },
 
   // Base config
-  extends: ['eslint:recommended'],
+  extends: ['eslint:recommended', 'react-app', 'prettier'],
+
+  rules: {
+    'prettier/prettier': 'error',
+  },
 
   overrides: [
     // React

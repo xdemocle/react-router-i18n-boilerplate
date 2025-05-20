@@ -7,7 +7,8 @@
     "app/**/.client/**/*",
     "workers/**/*",
     "worker-configuration.d.ts",
-    "load-context.ts"
+    "load-context.ts",
+    "test"
   ],
   "compilerOptions": {
     "composite": true,
