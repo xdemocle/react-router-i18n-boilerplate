@@ -1,6 +1,5 @@
 /.wrangler
 dist/
-build/
 .env
 .react-router/
 .dev.vars
@@ -17,3 +16,8 @@ build/
 .cache
 .env
 .windsurfrules*
+
+# build
+*build/**/*
+!build/client/
+!build/client/.assetsignore
