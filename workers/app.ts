@@ -15,23 +15,28 @@ const requestHandler = createRequestHandler(build as unknown as ServerBuild);
 export default {
   async fetch(request: CloudflareRequest, env: Env, ctx: ExecutionContext): Promise<CloudflareResponse> {
     try {
-      const loadContext = getLoadContext({
-        request,
-        context: {
-          cloudflare: {
-            cf: request.cf!,
-            ctx: {
-              waitUntil: ctx.waitUntil.bind(ctx),
-              passThroughOnException: ctx.passThroughOnException.bind(ctx),
+      if (request.url.search('/assets/') === -1 || request.url.search('/favicon.ico') === -1) {
+        const loadContext = getLoadContext({
+          request,
+          context: {
+            cloudflare: {
+              cf: request.cf!,
+              ctx: {
+                waitUntil: ctx.waitUntil.bind(ctx),
+                passThroughOnException: ctx.passThroughOnException.bind(ctx),
+              },
+              caches: caches as any,
+              env,
             },
-            caches: caches as any,
-            env,
           },
-        },
-      });
+        });
 
-      const response = await requestHandler(request as unknown as Request, loadContext);
-      return response as CloudflareResponse;
+        return (await requestHandler(request as unknown as Request, loadContext)) as CloudflareResponse;
+      }
+
+      // Passes the incoming request through to the assets binding.
+      // No asset matched this request, so this will evaluate `not_found_handling` behavior.
+      return await env.ASSETS.fetch(request);
     } catch (error) {
       console.log(error);
       return new Response('An unexpected error occurred', { status: 500 }) as CloudflareResponse;

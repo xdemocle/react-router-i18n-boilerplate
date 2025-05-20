@@ -3,10 +3,12 @@ import type {
   CfProperties,
   Request as CloudflareRequest,
   ExecutionContext,
+  Fetcher,
 } from '@cloudflare/workers-types/experimental';
 
 export interface Env {
   VALUE_FROM_CLOUDFLARE: 'Hello from Cloudflare';
+  ASSETS: Fetcher;
 }
 
 type GetLoadContextArgs = {
