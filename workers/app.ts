@@ -23,8 +23,7 @@ export default {
       url.pathname.startsWith('/assets/') ||
       url.pathname.startsWith('/locales/') ||
       url.pathname.startsWith('/favicon') ||
-      url.pathname.startsWith('/robots.txt') ||
-      url.pathname.startsWith('/manifest.json')
+      url.pathname.startsWith('/robots.txt')
     ) {
       return env.ASSETS.fetch(request)
     }
