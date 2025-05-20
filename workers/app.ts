@@ -10,6 +10,7 @@ declare module 'react-router' {
 }
 
 const requestHandler = createRequestHandler(
+  // eslint-disable-next-line import/no-unresolved
   () => import('virtual:react-router/server-build'),
   import.meta.env.MODE
 )
