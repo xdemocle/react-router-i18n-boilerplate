@@ -1,24 +1,27 @@
 {
   "files": [],
-  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.cloudflare.json" }],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.cloudflare.json"
+    }
+  ],
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowJs": true,
     "checkJs": true,
-    "noEmit": true,
+    "verbatimModuleSyntax": true,
     "skipLibCheck": true,
     "strict": true,
-    "baseUrl": ".",
-    "types": ["./worker-configuration.d.ts", "vite/client"],
+    "noEmit": true,
+    "types": [
+      "./worker-configuration.d.ts",
+      "vite/client"
+    ],
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": [
+        "./app/*"
+      ]
     },
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM", "WebWorker", "DOM.Iterable"]
   }
 }
