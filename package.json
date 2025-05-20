@@ -15,9 +15,9 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "lint": "pnpx eslint app test",
+    "lint": "pnpx eslint app tests",
     "lint:fix": "pnpm run lint -- --fix",
-    "prettier": "pnpx prettier app test --check",
+    "prettier": "pnpx prettier app tests --check",
     "prettier:fix": "pnpm run prettier -- --write",
     "format": "pnpm run prettier:fix && pnpm run lint:fix",
     "trunk": "./trunk flakytests validate --junit-paths \"./junit.xml\""
@@ -26,7 +26,8 @@
     "isbot": "^5.1.28",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router": "^7.6.0"
+    "react-router": "^7.6.0",
+    "wrangler": "^4.16.0"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.2.3",

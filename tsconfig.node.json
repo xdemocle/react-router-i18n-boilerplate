@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["vite.config.ts", "load-context.ts", "test"],
+  "include": ["vite.config.ts", "load-context.ts", "tests"],
   "compilerOptions": {
     "composite": true,
     "lib": ["ES2022"],

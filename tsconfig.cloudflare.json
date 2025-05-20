@@ -9,7 +9,7 @@
     "worker-configuration.d.ts",
     "load-context.ts",
     "package.json",
-    "test"
+    "tests"
   ],
   "compilerOptions": {
     "composite": true,
