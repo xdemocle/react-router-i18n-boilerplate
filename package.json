@@ -19,7 +19,7 @@
     "react-router": "^7.6.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250519.0",
+    "@cloudflare/workers-types": "^4.20250520.0",
     "@react-router/dev": "^7.6.0",
     "@react-router/fs-routes": "^7.6.0",
     "@tailwindcss/postcss": "^4.1.7",
@@ -44,7 +44,7 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vite-tsconfig-paths": "^5.1.4",
-    "wrangler": "^4.15.2"
+    "wrangler": "^4.16.0"
   },
   "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971"
 }
