@@ -1,0 +1,7 @@
+# robots.txt
+User-agent: *
+Allow: /
+
+User-agent: *
+Disallow: /assets/
+Disallow: /locales/
