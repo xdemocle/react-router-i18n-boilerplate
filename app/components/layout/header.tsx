@@ -49,7 +49,9 @@ export default function Header() {
             <LogoReactRouter width="32" height="auto" />
           </div>
           <span className="text-2xl font-display font-bold truncate">
-            <span className={isScrolled ? 'text-neutral-900' : 'text-shadow-xs text-white'}>i18n-boiler</span>
+            <span className={isScrolled ? 'text-neutral-900' : 'text-shadow-xs text-white'}>
+              i18n-boiler
+            </span>
           </span>
         </Link>
 
@@ -64,8 +66,8 @@ export default function Header() {
                     isActivePath(link.path)
                       ? 'text-primary-500'
                       : isScrolled
-                      ? 'text-neutral-700 hover:text-primary-500'
-                      : 'text-white hover:text-primary-200 text-shadow-xs'
+                        ? 'text-neutral-700 hover:text-primary-500'
+                        : 'text-white hover:text-primary-200 text-shadow-xs'
                   }`}
                 >
                   {link.name}
@@ -95,9 +97,19 @@ export default function Header() {
               stroke="currentColor"
             >
               {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -120,7 +132,9 @@ export default function Header() {
                   <Link
                     to={link.path}
                     className={`block py-2 font-medium ${
-                      isActivePath(link.path) ? 'text-primary-500' : 'text-neutral-700 hover:text-primary-500'
+                      isActivePath(link.path)
+                        ? 'text-primary-500'
+                        : 'text-neutral-700 hover:text-primary-500'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
