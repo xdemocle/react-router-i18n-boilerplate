@@ -2,7 +2,6 @@
 import { reactRouter } from '@react-router/dev/vite';
 import { cloudflareDevProxy } from '@react-router/dev/vite/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import eslint from 'vite-plugin-eslint';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -19,7 +18,6 @@ export default defineConfig({
     // cloudflare({ viteEnvironment: { name: "ssr" } }),
     tailwindcss(),
     reactRouter(),
-    react(),
     tsconfigPaths(),
   ],
 });
