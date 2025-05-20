@@ -17,6 +17,18 @@ const requestHandler = createRequestHandler(
 
 export default {
   async fetch(request, env, ctx) {
+    const url = new URL(request.url)
+
+    if (
+      url.pathname.startsWith('/assets/') ||
+      url.pathname.startsWith('/locales/') ||
+      url.pathname.startsWith('/favicon') ||
+      url.pathname.startsWith('/robots.txt') ||
+      url.pathname.startsWith('/manifest.json')
+    ) {
+      return env.ASSETS.fetch(request)
+    }
+
     return requestHandler(request, {
       cloudflare: { env, ctx },
     })
