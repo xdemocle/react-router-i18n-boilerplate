@@ -10,7 +10,7 @@ import { getLoadContext, type Env } from '../load-context';
 // @ts-ignore - This file is created by running npm run build
 import * as build from '../build/server';
 
-const requestHandler = createRequestHandler(build as unknown as ServerBuild);
+const requestHandler = createRequestHandler(build as unknown as ServerBuild, import.meta.env.MODE);
 
 export default {
   async fetch(request: CloudflareRequest, env: Env, ctx: ExecutionContext): Promise<CloudflareResponse> {
