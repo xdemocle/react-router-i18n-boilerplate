@@ -12,6 +12,7 @@ import {
 } from 'react-router'
 import pkg from '../package.json'
 import type { Route } from './+types/root'
+import { fallbackLng } from './i18n/config'
 import { initI18n } from './i18n/server'
 import './tailwind.css'
 
@@ -29,7 +30,7 @@ export const meta: MetaFunction = () => {
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const i18n = await initI18n(request)
-  const locale = i18n.language
+  const locale = i18n.language || fallbackLng
 
   return {
     locale,
@@ -51,7 +52,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { i18n } = useTranslation()
-  const { locale } = useLoaderData<typeof loader>()
+  const { locale } = useLoaderData<typeof loader>() || { locale: fallbackLng }
 
   return (
     <html lang={locale} dir={i18n.dir(locale)} suppressHydrationWarning={true}>
@@ -96,7 +97,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let stack: string | undefined
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error'
+    message = error.status === 404 ? '404 - Page Not Found' : 'Error'
     details =
       error.status === 404 ? 'The requested page could not be found.' : error.statusText || details
   } else if (import.meta.env.DEV && error && error instanceof Error) {
@@ -107,7 +108,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   return (
     <main className="pt-16 p-4 container mx-auto">
       <h1>{message}</h1>
-      <p>{details}</p>
+      <h3>{details}</h3>
+
       {stack && (
         <pre className="w-full p-4 overflow-x-auto">
           <code>{stack}</code>

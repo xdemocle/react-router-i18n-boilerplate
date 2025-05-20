@@ -31,6 +31,10 @@ const getDefaultLanguage = (request: Request) => {
 export const initI18n = async (request: Request) => {
   const lng = getDefaultLanguage(request)
 
+  if (i18n && i18n.isInitialized) {
+    return i18n
+  }
+
   // Server-side i18next configuration
   const config = {
     ...baseConfig,
@@ -58,9 +62,6 @@ export const initI18n = async (request: Request) => {
       })
     )
     .init(config)
-
-  // i18n.changeLanguage(i18n.language);
-  console.log('i18n.resolvedLanguage', i18n.resolvedLanguage)
 
   return i18n
 }
