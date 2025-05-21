@@ -1,4 +1,4 @@
-import { createRequestHandler } from 'react-router'
+import { createRequestHandler, type ServerBuild } from 'react-router'
 
 declare module 'react-router' {
   export interface AppLoadContext {
@@ -10,7 +10,15 @@ declare module 'react-router' {
 }
 
 const requestHandler = createRequestHandler(
-  () => import('virtual:react-router/server-build'),
+  () => {
+    // console.log('process.env', JSON.stringify(process.env))
+    if (process.env.NODE_ENV === 'test' || process.env.VITEST) {
+      return {} as ServerBuild
+    }
+
+    // eslint-disable-next-line import/no-unresolved
+    return import('virtual:react-router/server-build')
+  },
   import.meta.env.MODE
 )
 
