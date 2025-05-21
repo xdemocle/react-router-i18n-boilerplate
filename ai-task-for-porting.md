@@ -116,14 +116,3 @@ Would you like to enable any of the following?
 ---
 
 > ⚠️ Always default to **merge, not overwrite**. When unsure, favor preserving the destination project.
-
-```
-
-This Markdown prompt is now complete, structured, and ready for use. Claude can follow the steps, and thanks to your added input, won’t re-ask already-answered questions.
-
-Want me to bundle this into a `.md` file or send a version optimized for Claude’s system message formatting too?
-```
-
-```
-
-```
