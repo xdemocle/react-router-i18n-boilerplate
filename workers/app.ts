@@ -1,5 +1,4 @@
-/* eslint-disable */
-import { createRequestHandler, type ServerBuild } from 'react-router'
+import { createRequestHandler } from 'react-router'
 
 declare module 'react-router' {
   export interface AppLoadContext {
@@ -11,17 +10,7 @@ declare module 'react-router' {
 }
 
 const requestHandler = createRequestHandler(
-  async () => {
-    return import('virtual:react-router/server-build')
-    // if (import.meta.hot) {
-    // }
-
-    // // eslint-disable-next-line import/no-unresolved
-    // // @ts-expect-error This file is created by running npm run build
-    // const serverBuild = await import('../build/server/index.js')
-
-    // return Promise.resolve(serverBuild as unknown as ServerBuild)
-  },
+  () => import('virtual:react-router/server-build'),
   import.meta.env.MODE
 )
 
