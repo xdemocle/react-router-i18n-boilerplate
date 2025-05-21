@@ -1,7 +1,6 @@
-// import { defineWorkersConfig } from '@cloudflare/vitest-pool-workers/dist/config'
-import { defineConfig } from 'vitest/config'
+import { defineWorkersConfig } from '@cloudflare/vitest-pool-workers/config'
 
-export default defineConfig({
+export default defineWorkersConfig({
   test: {
     environment: 'node',
     globals: true,
@@ -14,20 +13,10 @@ export default defineConfig({
     // ],
     reporters: [['junit', { outputFile: 'junit.xml' }], 'verbose'],
     workspace: ['./vitest.config.{unit,browser}.ts'],
+    poolOptions: {
+      workers: {
+        wrangler: { configPath: './wrangler.jsonc' },
+      },
+    },
   },
 })
-
-// deps: {
-//   optimizer: {
-//     ssr: {
-//       enabled: true,
-//       include: ["discord-api-types/v10", "@microlabs/otel-cf-workers"],
-//     },
-//   },
-// },
-
-// poolOptions: {
-//   workers: {
-//     wrangler: { configPath: './wrangler.jsonc' },
-//   },
-// },
