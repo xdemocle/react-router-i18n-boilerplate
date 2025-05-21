@@ -37,6 +37,7 @@
     "target": "ES2022",
     "types": [
       "vite/client",
+      "@cloudflare/vitest-pool-workers"
     ]
   }
 }

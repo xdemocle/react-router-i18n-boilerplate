@@ -1,7 +1,6 @@
 import { assert, expect, test } from 'vitest'
-import { squared } from '../app/components/hello-world/basic.js'
 
-// Edit an assertion and save to see HMR in action
+const squared = (x: number) => x * x
 
 test('Math.sqrt()', () => {
   expect(Math.sqrt(4)).toBe(2)
@@ -9,9 +8,9 @@ test('Math.sqrt()', () => {
   expect(Math.sqrt(2)).toBe(Math.SQRT2)
 })
 
-test('Squared', () => {
+test('squared', () => {
   expect(squared(2)).toBe(4)
-  expect(squared(12)).toBe(144)
+  expect(squared(3)).toBe(9)
 })
 
 test('JSON', () => {

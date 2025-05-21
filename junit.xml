@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="4" failures="0" errors="0" time="0.157">
-    <testsuite name="test/basic.test.ts" timestamp="2025-05-20T16:55:05.004Z" hostname="ROKLAP.station" tests="3" failures="0" errors="0" skipped="0" time="0.0033">
-        <testcase classname="test/basic.test.ts" name="Math.sqrt()" time="0.0013">
+<testsuites name="vitest tests" tests="4" failures="0" errors="0" time="0.204283966">
+    <testsuite name="tests/unit/basic.test.ts" timestamp="2025-05-21T18:02:17.030Z" hostname="ROKLAP.station" tests="3" failures="0" errors="0" skipped="0" time="0.003883966">
+        <testcase classname="tests/unit/basic.test.ts" name="Math.sqrt()" time="0.001579618">
         </testcase>
-        <testcase classname="test/basic.test.ts" name="Squared" time="0.0002">
+        <testcase classname="tests/unit/basic.test.ts" name="squared" time="0.000236341">
         </testcase>
-        <testcase classname="test/basic.test.ts" name="JSON" time="0.0007">
+        <testcase classname="tests/unit/basic.test.ts" name="JSON" time="0.000908262">
         </testcase>
     </testsuite>
-    <testsuite name="test/hello-world.spec.tsx" timestamp="2025-05-20T16:55:05.008Z" hostname="ROKLAP.station" tests="1" failures="0" errors="0" skipped="0" time="0.1537">
-        <testcase classname="test/hello-world.spec.tsx" name="renders name" time="0.1535">
+    <testsuite name="tests/spec/hello-world.spec.tsx" timestamp="2025-05-21T18:02:17.032Z" hostname="ROKLAP.station" tests="1" failures="0" errors="0" skipped="0" time="0.2004">
+        <testcase classname="tests/spec/hello-world.spec.tsx" name="renders name" time="0.1994">
         </testcase>
     </testsuite>
 </testsuites>

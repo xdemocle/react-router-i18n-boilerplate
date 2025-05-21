@@ -11,7 +11,6 @@ declare module 'react-router' {
 
 const requestHandler = createRequestHandler(
   () => {
-    // console.log('process.env', JSON.stringify(process.env))
     if (process.env.NODE_ENV === 'test' || process.env.VITEST) {
       return {} as ServerBuild
     }

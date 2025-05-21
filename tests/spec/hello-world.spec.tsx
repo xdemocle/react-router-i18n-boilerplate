@@ -2,7 +2,7 @@
 import React from 'react'
 import { expect, test } from 'vitest'
 import { render } from 'vitest-browser-react'
-import HelloWorld from '../app/components/hello-world/hello-world'
+import HelloWorld from '../../app/components/hello-world/hello-world'
 
 test('renders name', async () => {
   const { getByText, getByRole } = render(<HelloWorld name="Vitest" />)
