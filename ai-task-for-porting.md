@@ -1,10 +1,12 @@
 # AI Task: Migrate Features & Code Safely
 
-## 🛠️ Task: Migrate Features & Code Safely
+## Migrate Features & Code Safely
+
+### 🛠️ Task description
 
 Migrate all relevant features and code changes from the following source project to the new one.
 
-**Source Project:**  
+**Source Project:**
 `/Users/democle/Documents/TheWeb3Ninja/react-router-i18n-boilerplate`
 
 **Destination Project:**  
