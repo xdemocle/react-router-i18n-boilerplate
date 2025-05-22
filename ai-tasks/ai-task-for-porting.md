@@ -6,11 +6,9 @@
 
 Migrate all relevant features and code changes from the following source project to the new one.
 
-**Source Project:**
-`/Users/democle/Documents/TheWeb3Ninja/react-router-i18n-boilerplate`
+**Source Project:** `react-router-i18n-boilerplate`
 
-**Destination Project:**  
-`/Users/democle/Documents/TheWeb3Ninja/bzz-one-app`
+**Destination Project:** `bzz-one-app`
 
 ---
 
