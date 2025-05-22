@@ -8,7 +8,6 @@
     "workers/**/*",
     "build/server/*",
     "worker-configuration.d.ts",
-    "load-context.ts",
     "package.json",
     "tests"
   ],

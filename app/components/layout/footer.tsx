@@ -161,7 +161,7 @@ export default function Footer() {
         <div className="border-t border-neutral-800 pt-8 pb-4">
           <div className="flex flex-col md:flex-row justify-between">
             <p className="text-neutral-500 text-sm mb-4 md:mb-0">
-              &copy; {currentYear} react-router-i18n-boilerplate. {t('footer.allRightsReserved')}
+              &copy; {currentYear} react-router-i18n-boilerplate - {t('footer.allRightsReserved')}
             </p>
             <div className="flex space-x-4 text-sm text-neutral-500">
               <Link to="/terms" className="hover:text-primary-400 transition-colors duration-200">

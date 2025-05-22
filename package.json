@@ -2,9 +2,10 @@
   "name": "react-router-i18n-boilerplate",
   "description": "Production-ready React Router v7 boilerplate for startups, local vendors, and small businesses. Fast, modern, and SEO-optimized.",
   "version": "0.2.1",
+  "private": false,
   "type": "module",
   "scripts": {
-    "bl": "pnpm run test:run && pnpm run trunk && pnpm run build",
+    "bl": "pnpm run typecheck && pnpm run test:run && pnpm run trunk",
     "build": "react-router build",
     "cf-typegen": "wrangler types",
     "deploy": "pnpm run build && wrangler deploy",

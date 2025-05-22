@@ -20,7 +20,13 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-// Add loader
+// export async function loader() {
+//   const locale = i18n.language
+
+//   return {
+//     locale,
+//   }
+// }
 
 // export const meta: MetaFunction = ({ data }) => {
 //   return { title: data.title }
